@@ -1,0 +1,127 @@
+(ns madra.cluiche-nua
+  (:require [madra.gaeilge :refer [FeidhmchlárÁbhair SonraíTéama StílTéacs Glas Dearg Gorm Bán Dubh Buí Cian Maigeanta Oráiste Liath Corcra Bándearg Ómra Donn Indigó Aol Lár Tús Deireadh TrasLár TrasTús TrasDeireadh TrasSín Trom Normálta Rith Colún Ró Bosca BoscaMéide Lárionad Cruach Leathnaithe Téacs Deilbhín Íomhá Scafall BarraFeidhmchláir CnaipeSnámh CnaipeArdaithe RéimseTéacs Ticbhosca LiostaAmharc Priontáil Sainigh Adamh Babhtáil! Athshocraigh! Giuirléid Fíor Bréagach Má Lig Ní Agus Nó Líon Socraigh! Déan Nuair Faigh Folamh? Faic Corrlach Corrlach.uile Ailíniú Ailíniú.lár MaisiúBosca GaRediúis GaRediúis.cruinn Imlíne Imlíne.uile RialtóirTéacs NódFócais LeTeimhneacht Teimhneacht MaisiúIonchuir ImlíneIonchuir ImlíneIonchuir.faic BrathadóirGotha Roghnúchán RoghnúchánÓIonad IonadTéacs IonadTéacsFritháireamh Feidhm LeHaghaidh Tréimhse Moilligh CásUachtair CásÍochtair MarThéacs Raon Nuashonraigh Comhcheangail Méadaigh Glan! IarrFócas! TaispeáinMéarchlár! SocraighTéacs! SocraighRoghnúchán! Timfhilleadh AilíniúTimfhilleadh AilíniúTimfhilleadh.center]]
+            ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]
+            [clojure.string :as str]))
+
+(def focail
+  [{:béarla "I go" :gaeilge "Téim"}
+   {:béarla "You go" :gaeilge "Téann tú"}
+   {:béarla "He goes" :gaeilge "Téann sé"}
+   {:béarla "She goes" :gaeilge "Téann sí"}
+   {:béarla "We go" :gaeilge "Téimid"}
+   {:béarla "You (pl) go" :gaeilge "Téann sibh"}
+   {:béarla "They go" :gaeilge "Téann siad"}])
+
+(defonce stát-nua (Adamh {:innéacs 0 :ionchur "" :críochnaithe Bréagach :earráid Bréagach}))
+
+(Sainigh BoscaLitreach [litir gníomhach earráid críochnaithe]
+         (Lig [dath-imill (Má críochnaithe Glas
+                              (Má (Agus gníomhach earráid) Dearg
+                                  (Má gníomhach Gorm Liath)))
+               dath-cúlra (Má críochnaithe Glas
+                              (Má (Agus gníomhach earráid) (LeTeimhneacht Dearg 0.1)
+                                  (Má gníomhach (LeTeimhneacht Gorm 0.1) Bán)))]
+              (Bosca
+               :airde 60.0
+               :leithead 50.0
+               :corrlach (Corrlach.uile 4.0)
+               :ailíniú Ailíniú.lár
+               :maisiú (MaisiúBosca
+                        :dath dath-cúlra
+                        :ga (GaRediúis.cruinn 8.0)
+                        :imill (Imlíne.uile
+                                :dath dath-imill
+                                :leithead (Má gníomhach 2.0 1.0)))
+               :páiste (Téacs (CásUachtair (MarThéacs litir))
+                              :stíl (StílTéacs
+                                     :méidCló 32.0
+                                     :dath (Má críochnaithe Bán Dubh)
+                                     :meáchanCló Trom)))))
+
+(Sainigh CluicheNua []
+         (Giuirléid
+          :managed [rialtóir (RialtóirTéacs)
+                    fócas (NódFócais)]
+          :watch [stát stát-nua]
+          (Lig [{:keys [innéacs ionchur críochnaithe earráid]} stát]
+               (Má (>= innéacs (Líon focail))
+                   (Colún
+                    :príomh-ais Lár
+                    :páistí
+                    [(Téacs "Comhghairdeas!" :stíl (StílTéacs :méidCló 40.0 :dath Glas))
+                     (BoscaMéide :airde 20.0)
+                     (CnaipeArdaithe
+                      :arBrú (Feidhm []
+                                     (Athshocraigh! stát-nua {:innéacs 0 :ionchur "" :críochnaithe Bréagach :earráid Bréagach})
+                                     (Glan! rialtóir)
+                                     (IarrFócas! fócas))
+                      :páiste (Téacs "Imir Arís"))])
+                   (Lig [focal (Faigh focail innéacs)
+                         sprioc (:gaeilge focal)
+                         fad-sprioc (Líon sprioc)]
+                        (Colún
+                         :príomh-ais Lár
+                         :páistí
+                         [(Téacs "Béarla" :stíl (StílTéacs :méidCló 16.0 :dath Liath))
+                          (BoscaMéide :airde 5.0)
+                          (Téacs (:béarla focal)
+                                 :stíl (StílTéacs :méidCló 24.0 :dath Dubh :meáchanCló Trom))
+
+                          (BoscaMéide :airde 30.0)
+
+                          (Téacs "Gaeilge" :stíl (StílTéacs :méidCló 16.0 :dath Glas))
+                          (BoscaMéide :airde 5.0
+                                      :páiste (Téacs sprioc
+                                                     :stíl (StílTéacs :méidCló 32.0 :dath Glas :meáchanCló Trom)))
+
+                          (BoscaMéide :airde 40.0)
+
+                          (Cruach
+                           :ailíniú Ailíniú.lár
+                           :páistí
+                           [(Teimhneacht
+                             :teimhneacht 0.0
+                             :páiste (RéimseTéacs
+                                      :rialtóir rialtóir
+                                      :fócas fócas ;                          
+                                      :maisiú (MaisiúIonchuir :imill ImlíneIonchuir.faic)
+                                      :arAthrú (Feidhm [téacs]
+                                                       (Lig [fad-reatha (Líon ionchur)
+                                                             fad-nua (Líon téacs)]
+                                                            (Má (> fad-nua fad-reatha)
+                                                                (Lig [litir-nua (last téacs)
+                                                                      litir-sprioc (Faigh sprioc fad-reatha)]
+                                                                     (Má (= (CásÍochtair (MarThéacs litir-nua)) (CásÍochtair (MarThéacs litir-sprioc)))
+                                                                         (Déan
+                                                                          (Babhtáil! stát-nua Comhcheangail :ionchur téacs)
+                                                                          (Nuair (= fad-nua fad-sprioc)
+                                                                                 (Babhtáil! stát-nua Comhcheangail :críochnaithe Fíor)
+                                                                                 (Moilligh (Tréimhse :soicindí 1)
+                                                                                           (Babhtáil! stát-nua (Feidhm [s]
+                                                                                                                       (-> s
+                                                                                                                           (Nuashonraigh :innéacs Méadaigh)
+                                                                                                                           (Comhcheangail :ionchur "" :críochnaithe Bréagach :earráid Bréagach))))
+                                                                                           (Glan! rialtóir))))
+                                                                         (Déan
+                                                                          (SocraighTéacs! rialtóir ionchur)
+                                                                          (SocraighRoghnúchán! rialtóir (RoghnúchánÓIonad (IonadTéacsFritháireamh fad-reatha)))
+                                                                          (Babhtáil! stát-nua Comhcheangail :earráid Fíor)
+                                                                          (Moilligh (Tréimhse :milleasoicindí 200) (Babhtáil! stát-nua Comhcheangail :earráid Bréagach)))))
+                                                                (Babhtáil! stát-nua Comhcheangail :ionchur téacs))
+                                                            Faic))))
+                            (BrathadóirGotha
+                             :arBrú (Feidhm []
+                                            (IarrFócas! fócas)
+                                            (TaispeáinMéarchlár!))
+                             :páiste (Timfhilleadh
+                                      :ailíniú AilíniúTimfhilleadh.center
+                                      :páistí
+                                      (LeHaghaidh [i (Raon fad-sprioc)]
+                                                  (Lig [litir-sprioc (Faigh sprioc i)
+                                                        litir-ionchur (Faigh ionchur i "")
+                                                        gníomhach (Agus (Ní críochnaithe) (= i (Líon ionchur)))]
+                                                       (BoscaLitreach (Má (Folamh? (MarThéacs litir-ionchur)) "" litir-ionchur) gníomhach earráid críochnaithe)))))])
+                          (BoscaMéide :airde 30.0)
+                          (Téacs (Má críochnaithe "Ceart!" "Clóscríobh an focal thuas")
+                                 :stíl (StílTéacs :dath (Má críochnaithe Glas Liath)))]))))))

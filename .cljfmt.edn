@@ -1,0 +1,15 @@
+{:indents {madra.gaeilge/Feidhm [[:block 1]]
+           madra.gaeilge/Sainigh [[:inner 0]]
+           madra.gaeilge/Lig [[:block 1]]
+           madra.gaeilge/LeHaghaidh [[:block 1]]
+           madra.gaeilge/Má [[:block 1]]
+           madra.gaeilge/Nuair [[:block 1]]
+           madra.gaeilge/Giuirléid [[:block 1]]
+                   ;; Unqualified usage matching
+           Feidhm [[:block 1]]
+           Sainigh [[:inner 0]]
+           Lig [[:block 1]]
+           LeHaghaidh [[:block 1]]
+           Má [[:block 1]]
+           Nuair [[:block 1]]
+           Giuirléid [[:block 1]]}}

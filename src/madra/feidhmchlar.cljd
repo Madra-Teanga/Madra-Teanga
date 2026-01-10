@@ -1,0 +1,16 @@
+(ns madra.feidhmchlar
+  (:require [madra.gaeilge :refer [Rith FeidhmchlárÁbhair SonraíTéama Scafall BarraFeidhmchláir Téacs
+                                   Lárionad Colún BoscaMéide StílTéacs Glas Lár Sainigh]]
+            [madra.cluiche-nua :refer [CluicheNua]]))
+
+(Sainigh Príomh []
+         (Rith
+          (FeidhmchlárÁbhair
+           :teideal "Fáilte go ClojureDart"
+           :téama (SonraíTéama :punannPríomha Glas)
+           :baile
+           (Scafall
+            :barra (BarraFeidhmchláir
+                    :teideal (Téacs "Draíocht"))
+            :corp (Lárionad
+                   :páiste (CluicheNua))))))

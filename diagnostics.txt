@@ -1,0 +1,143 @@
+[  0%] clojure-lsp                 [  5%] Finding kondo config        [ 10%] Finding cache               [ 15%] Copying kondo configs       [ 15%] Resolving config paths      [ 20%] Analyzing project files     [ 99%] Project analyzed            Finding diagnostics...
+[33msrc/madra/cluiche_nua.cljd:2:36: warning: [unused-referred-var] #'madra.gaeilge/FeidhmchlárÁbhair is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:54: warning: [unused-referred-var] #'madra.gaeilge/SonraíTéama is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:101: warning: [unused-referred-var] #'madra.gaeilge/Buí is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:105: warning: [unused-referred-var] #'madra.gaeilge/Cian is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:110: warning: [unused-referred-var] #'madra.gaeilge/Maigeanta is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:120: warning: [unused-referred-var] #'madra.gaeilge/Oráiste is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:134: warning: [unused-referred-var] #'madra.gaeilge/Corcra is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:141: warning: [unused-referred-var] #'madra.gaeilge/Bándearg is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:150: warning: [unused-referred-var] #'madra.gaeilge/Ómra is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:155: warning: [unused-referred-var] #'madra.gaeilge/Donn is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:160: warning: [unused-referred-var] #'madra.gaeilge/Indigó is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:167: warning: [unused-referred-var] #'madra.gaeilge/Aol is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:175: warning: [unused-referred-var] #'madra.gaeilge/Tús is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:179: warning: [unused-referred-var] #'madra.gaeilge/Deireadh is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:188: warning: [unused-referred-var] #'madra.gaeilge/TrasLár is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:196: warning: [unused-referred-var] #'madra.gaeilge/TrasTús is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:204: warning: [unused-referred-var] #'madra.gaeilge/TrasDeireadh is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:217: warning: [unused-referred-var] #'madra.gaeilge/TrasSín is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:230: warning: [unused-referred-var] #'madra.gaeilge/Normálta is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:239: warning: [unused-referred-var] #'madra.gaeilge/Rith is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:250: warning: [unused-referred-var] #'madra.gaeilge/Ró is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:270: warning: [unused-referred-var] #'madra.gaeilge/Lárionad is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:286: warning: [unused-referred-var] #'madra.gaeilge/Leathnaithe is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:304: warning: [unused-referred-var] #'madra.gaeilge/Deilbhín is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:313: warning: [unused-referred-var] #'madra.gaeilge/Íomhá is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:319: warning: [unused-referred-var] #'madra.gaeilge/Scafall is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:327: warning: [unused-referred-var] #'madra.gaeilge/BarraFeidhmchláir is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:345: warning: [unused-referred-var] #'madra.gaeilge/CnaipeSnámh is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:384: warning: [unused-referred-var] #'madra.gaeilge/Ticbhosca is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:394: warning: [unused-referred-var] #'madra.gaeilge/LiostaAmharc is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:407: warning: [unused-referred-var] #'madra.gaeilge/Priontáil is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:494: warning: [unused-referred-var] #'madra.gaeilge/Nó is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:502: warning: [unused-referred-var] #'madra.gaeilge/Socraigh! is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:542: warning: [unused-referred-var] #'madra.gaeilge/Corrlach is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:565: warning: [unused-referred-var] #'madra.gaeilge/Ailíniú is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:597: warning: [unused-referred-var] #'madra.gaeilge/GaRediúis is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:624: warning: [unused-referred-var] #'madra.gaeilge/Imlíne is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:708: warning: [unused-referred-var] #'madra.gaeilge/ImlíneIonchuir is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:759: warning: [unused-referred-var] #'madra.gaeilge/Roghnúchán is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:787: warning: [unused-referred-var] #'madra.gaeilge/IonadTéacs is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:2:1017: warning: [unused-referred-var] #'madra.gaeilge/AilíniúTimfhilleadh is referred but never used[0m
+[33msrc/madra/cluiche_nua.cljd:3:14: warning: [unused-namespace] namespace package:flutter/material.dart is required but never used[0m
+[33msrc/madra/cluiche_nua.cljd:4:14: warning: [unused-namespace] namespace cljd.flutter is required but never used[0m
+[33msrc/madra/cluiche_nua.cljd:5:14: warning: [unused-namespace] namespace clojure.string is required but never used[0m
+[31msrc/madra/cluiche_nua.cljd:18:10: error: [unresolved-symbol] Unresolved symbol: BoscaLitreach[0m
+[31msrc/madra/cluiche_nua.cljd:18:25: error: [unresolved-symbol] Unresolved symbol: litir[0m
+[31msrc/madra/cluiche_nua.cljd:18:31: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:18:41: error: [unresolved-symbol] Unresolved symbol: earráid[0m
+[31msrc/madra/cluiche_nua.cljd:18:49: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:19:16: error: [unresolved-symbol] Unresolved symbol: dath-imill[0m
+[31msrc/madra/cluiche_nua.cljd:19:31: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:20:41: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:20:51: error: [unresolved-symbol] Unresolved symbol: earráid[0m
+[31msrc/madra/cluiche_nua.cljd:21:39: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:22:16: error: [unresolved-symbol] Unresolved symbol: dath-cúlra[0m
+[31msrc/madra/cluiche_nua.cljd:22:31: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:23:41: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:23:51: error: [unresolved-symbol] Unresolved symbol: earráid[0m
+[31msrc/madra/cluiche_nua.cljd:24:39: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:31:31: error: [unresolved-symbol] Unresolved symbol: dath-cúlra[0m
+[31msrc/madra/cluiche_nua.cljd:34:39: error: [unresolved-symbol] Unresolved symbol: dath-imill[0m
+[31msrc/madra/cluiche_nua.cljd:35:47: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:36:55: error: [unresolved-symbol] Unresolved symbol: litir[0m
+[31msrc/madra/cluiche_nua.cljd:39:48: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:42:10: error: [unresolved-symbol] Unresolved symbol: CluicheNua[0m
+[31msrc/madra/cluiche_nua.cljd:44:21: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:45:21: error: [unresolved-symbol] Unresolved symbol: fócas[0m
+[31msrc/madra/cluiche_nua.cljd:46:19: error: [unresolved-symbol] Unresolved symbol: stát[0m
+[31msrc/madra/cluiche_nua.cljd:47:25: error: [unresolved-symbol] Unresolved symbol: innéacs[0m
+[31msrc/madra/cluiche_nua.cljd:47:33: error: [unresolved-symbol] Unresolved symbol: ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:47:41: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:47:54: error: [unresolved-symbol] Unresolved symbol: earráid[0m
+[31msrc/madra/cluiche_nua.cljd:47:64: error: [unresolved-symbol] Unresolved symbol: stát[0m
+[31msrc/madra/cluiche_nua.cljd:48:24: error: [unresolved-symbol] Unresolved symbol: innéacs[0m
+[31msrc/madra/cluiche_nua.cljd:57:45: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:58:50: error: [unresolved-symbol] Unresolved symbol: fócas[0m
+[31msrc/madra/cluiche_nua.cljd:60:26: error: [unresolved-symbol] Unresolved symbol: focal[0m
+[31msrc/madra/cluiche_nua.cljd:60:46: error: [unresolved-symbol] Unresolved symbol: innéacs[0m
+[31msrc/madra/cluiche_nua.cljd:61:26: error: [unresolved-symbol] Unresolved symbol: sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:61:43: error: [unresolved-symbol] Unresolved symbol: focal[0m
+[31msrc/madra/cluiche_nua.cljd:62:26: error: [unresolved-symbol] Unresolved symbol: fad-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:62:43: error: [unresolved-symbol] Unresolved symbol: sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:68:43: error: [unresolved-symbol] Unresolved symbol: focal[0m
+[31msrc/madra/cluiche_nua.cljd:75:54: error: [unresolved-symbol] Unresolved symbol: sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:86:49: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:87:46: error: [unresolved-symbol] Unresolved symbol: fócas[0m
+[31msrc/madra/cluiche_nua.cljd:89:57: error: [unresolved-symbol] Unresolved symbol: téacs[0m
+[31msrc/madra/cluiche_nua.cljd:90:62: error: [unresolved-symbol] Unresolved symbol: fad-reatha[0m
+[31msrc/madra/cluiche_nua.cljd:90:79: error: [unresolved-symbol] Unresolved symbol: ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:91:62: error: [unresolved-symbol] Unresolved symbol: fad-nua[0m
+[31msrc/madra/cluiche_nua.cljd:91:76: error: [unresolved-symbol] Unresolved symbol: téacs[0m
+[31msrc/madra/cluiche_nua.cljd:92:68: error: [unresolved-symbol] Unresolved symbol: fad-nua[0m
+[31msrc/madra/cluiche_nua.cljd:92:76: error: [unresolved-symbol] Unresolved symbol: fad-reatha[0m
+[31msrc/madra/cluiche_nua.cljd:93:71: error: [unresolved-symbol] Unresolved symbol: litir-nua[0m
+[31msrc/madra/cluiche_nua.cljd:93:87: error: [unresolved-symbol] Unresolved symbol: téacs[0m
+[31msrc/madra/cluiche_nua.cljd:94:71: error: [unresolved-symbol] Unresolved symbol: litir-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:94:91: error: [unresolved-symbol] Unresolved symbol: sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:94:98: error: [unresolved-symbol] Unresolved symbol: fad-reatha[0m
+[31msrc/madra/cluiche_nua.cljd:95:101: error: [unresolved-symbol] Unresolved symbol: litir-nua[0m
+[31msrc/madra/cluiche_nua.cljd:95:137: error: [unresolved-symbol] Unresolved symbol: litir-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:97:118: error: [unresolved-symbol] Unresolved symbol: téacs[0m
+[31msrc/madra/cluiche_nua.cljd:98:85: error: [unresolved-symbol] Unresolved symbol: fad-nua[0m
+[31msrc/madra/cluiche_nua.cljd:98:93: error: [unresolved-symbol] Unresolved symbol: fad-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:101:121: error: [unresolved-symbol] Unresolved symbol: s[0m
+[31msrc/madra/cluiche_nua.cljd:102:124: error: [unresolved-symbol] Unresolved symbol: s[0m
+[31msrc/madra/cluiche_nua.cljd:105:99: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:107:91: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:107:100: error: [unresolved-symbol] Unresolved symbol: ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:108:96: error: [unresolved-symbol] Unresolved symbol: rialtóir[0m
+[31msrc/madra/cluiche_nua.cljd:108:147: error: [unresolved-symbol] Unresolved symbol: fad-reatha[0m
+[31msrc/madra/cluiche_nua.cljd:111:108: error: [unresolved-symbol] Unresolved symbol: téacs[0m
+[31msrc/madra/cluiche_nua.cljd:115:57: error: [unresolved-symbol] Unresolved symbol: fócas[0m
+[31msrc/madra/cluiche_nua.cljd:120:52: error: [unresolved-symbol] Unresolved symbol: i[0m
+[31msrc/madra/cluiche_nua.cljd:120:60: error: [unresolved-symbol] Unresolved symbol: fad-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:121:57: error: [unresolved-symbol] Unresolved symbol: litir-sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:121:77: error: [unresolved-symbol] Unresolved symbol: sprioc[0m
+[31msrc/madra/cluiche_nua.cljd:121:84: error: [unresolved-symbol] Unresolved symbol: i[0m
+[31msrc/madra/cluiche_nua.cljd:122:57: error: [unresolved-symbol] Unresolved symbol: litir-ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:122:78: error: [unresolved-symbol] Unresolved symbol: ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:122:86: error: [unresolved-symbol] Unresolved symbol: i[0m
+[31msrc/madra/cluiche_nua.cljd:123:57: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:123:77: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:123:94: error: [unresolved-symbol] Unresolved symbol: i[0m
+[31msrc/madra/cluiche_nua.cljd:123:102: error: [unresolved-symbol] Unresolved symbol: ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:124:57: error: [unresolved-symbol] Unresolved symbol: BoscaLitreach[0m
+[31msrc/madra/cluiche_nua.cljd:124:95: error: [unresolved-symbol] Unresolved symbol: litir-ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:124:114: error: [unresolved-symbol] Unresolved symbol: litir-ionchur[0m
+[31msrc/madra/cluiche_nua.cljd:124:129: error: [unresolved-symbol] Unresolved symbol: gníomhach[0m
+[31msrc/madra/cluiche_nua.cljd:124:139: error: [unresolved-symbol] Unresolved symbol: earráid[0m
+[31msrc/madra/cluiche_nua.cljd:124:147: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:126:38: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[31msrc/madra/cluiche_nua.cljd:127:61: error: [unresolved-symbol] Unresolved symbol: críochnaithe[0m
+[33msrc/madra/gaeilge.cljd:235:41: warning: [unused-binding] unused binding opts[0m
+[33msrc/madra/gaeilge.cljd:255:44: warning: [unused-binding] unused binding opts[0m
+[33msrc/madra/gaeilge.cljd:309:51: warning: [unused-binding] unused binding opts[0m
+[33msrc/madra/feidhmchlar.cljd:3:45: warning: [unused-referred-var] #'madra.gaeilge/Colún is referred but never used[0m
+[33msrc/madra/feidhmchlar.cljd:3:51: warning: [unused-referred-var] #'madra.gaeilge/BoscaMéide is referred but never used[0m
+[33msrc/madra/feidhmchlar.cljd:3:62: warning: [unused-referred-var] #'madra.gaeilge/StílTéacs is referred but never used[0m
+[33msrc/madra/feidhmchlar.cljd:3:77: warning: [unused-referred-var] #'madra.gaeilge/Lár is referred but never used[0m
+[33msrc/madra/feidhmchlar.cljd:4:40: warning: [unresolved-var] Unresolved var: CluicheNua[0m
+[31msrc/madra/feidhmchlar.cljd:6:10: error: [unresolved-symbol] Unresolved symbol: Príomh[0m
+[33msrc/madra/feidhmchlar.cljd:16:29: warning: [unresolved-var] Unresolved var: CluicheNua[0m

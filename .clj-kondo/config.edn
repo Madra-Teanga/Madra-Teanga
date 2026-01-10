@@ -1,0 +1,24 @@
+{:config-paths ["imports/tensegritics/clojuredart"]
+ :linters {:macro-symbol-used-as-function {:level :error}}
+ :hooks {:analyze-call {madra.gaeilge/Giuirléid hooks.flutter2/widget}}
+ :lint-as {madra.gaeilge/Sainigh clojure.core/defn
+           madra.gaeilge/Lig clojure.core/let
+           madra.gaeilge/Feidhm clojure.core/fn
+           madra.gaeilge/LeHaghaidh clojure.core/for
+           madra.gaeilge/Má clojure.core/if
+           madra.gaeilge/Nuair clojure.core/when
+           madra.gaeilge/Déan clojure.core/do
+           madra.gaeilge/Giuirléid cljd.flutter/widget
+           madra.gaeilge/Agus clojure.core/and
+           madra.gaeilge/Nó clojure.core/or
+           ;; Unqualified
+           Sainigh clojure.core/defn
+           Lig clojure.core/let
+           Feidhm clojure.core/fn
+           LeHaghaidh clojure.core/for
+           Má clojure.core/if
+           Nuair clojure.core/when
+           Déan clojure.core/do
+           Agus clojure.core/and
+           Nó clojure.core/or
+           Giuirléid cljd.flutter/widget}}

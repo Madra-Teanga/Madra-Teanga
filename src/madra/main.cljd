@@ -1,0 +1,5 @@
+(ns madra.main
+  (:require [madra.feidhmchlar :refer [Príomh]]))
+
+(defn main []
+  (Príomh))

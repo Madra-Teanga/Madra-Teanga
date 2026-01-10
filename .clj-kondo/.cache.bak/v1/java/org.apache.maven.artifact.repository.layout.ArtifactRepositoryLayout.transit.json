@@ -1,0 +1,1 @@
+["^ ","~:members",["^ ","ROLE",["~#set",[["^ ","~:flags",["^2",["~:public","~:static","~:field","~:final"]]]]],"getId",["^2",[["^ ","^3",["^2",["~:method","^4"]]]]],"pathOf",["^2",[["^ ","^3",["^2",["^9","^4"]]]]],"pathOfLocalRepositoryMetadata",["^2",[["^ ","^3",["^2",["^9","^4"]]]]],"pathOfRemoteRepositoryMetadata",["^2",[["^ ","^3",["^2",["^9","^4"]]]]]]]

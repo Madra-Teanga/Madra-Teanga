@@ -1,0 +1,1 @@
+["^ ","~:members",["^ ","initService",["~#set",[["^ ","~:flags",["^2",["~:method","~:public"]]]]],"setRemoteRepositoryManager",["^2",[["^ ","^3",["^2",["^4","^5"]]]]],"setArtifactDescriptorReader",["^2",[["^ ","^3",["^2",["^4","^5"]]]]],"setVersionRangeResolver",["^2",[["^ ","^3",["^2",["^4","^5"]]]]],"collectDependencies",["^2",[["^ ","^3",["^2",["^4","^5","~:final"]]]]]]]

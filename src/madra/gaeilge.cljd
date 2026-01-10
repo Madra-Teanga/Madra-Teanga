@@ -1,0 +1,359 @@
+(ns madra.gaeilge
+  (:require ["package:flutter/material.dart" :as m]
+            ["package:flutter/services.dart" :as seirbhísí]
+            [cljd.flutter :as f]))
+
+;; App
+(defmacro FeidhmchlárÁbhair [& {:keys [teideal téama baile] :as opts}]
+  `(m/MaterialApp
+    ~@(when (contains? opts :teideal) ['.title teideal])
+    ~@(when (contains? opts :téama) ['.theme téama])
+    ~@(when (contains? opts :baile) ['.home baile])))
+
+;; Theming & Styling
+(defmacro SonraíTéama [& {:keys [punannPríomha] :as opts}]
+  `(m/ThemeData
+    ~@(when (contains? opts :punannPríomha) ['.primarySwatch punannPríomha])))
+
+(defmacro StílTéacs [& {:keys [dath méidCló meáchanCló] :as opts}]
+  `(m/TextStyle
+    ~@(when (contains? opts :dath) ['.color dath])
+    ~@(when (contains? opts :méidCló) ['.fontSize méidCló])
+    ~@(when (contains? opts :meáchanCló) ['.fontWeight meáchanCló])))
+
+;; Colors (Dathanna)
+(def Glas m.Colors/green)
+(def Dearg m.Colors/red)
+(def Gorm m.Colors/blue)
+(def Bán m.Colors/white)
+(def Dubh m.Colors/black)
+(def Buí m.Colors/yellow)
+(def Cian m.Colors/cyan)
+(def Maigeanta m.Colors/purpleAccent)
+(def Oráiste m.Colors/orange)
+(def Liath m.Colors/grey)
+(def Corcra m.Colors/purple)
+(def Bándearg m.Colors/pink)
+(def Ómra m.Colors/amber)
+(def Donn m.Colors/brown)
+(def Indigó m.Colors/indigo)
+(def Aol m.Colors/lime)
+
+;; Alignment (Ailíniú)
+(def Lár m.MainAxisAlignment/center)
+(def Tús m.MainAxisAlignment/start)
+(def Deireadh m.MainAxisAlignment/end)
+
+(def TrasLár m.CrossAxisAlignment/center)
+(def TrasTús m.CrossAxisAlignment/start)
+(def TrasDeireadh m.CrossAxisAlignment/end)
+(def TrasSín m.CrossAxisAlignment/stretch)
+
+;; Font Weight (Meáchan Cló)
+(def Trom m.FontWeight/bold)
+(def Normálta m.FontWeight/normal)
+
+;; Runner
+(defmacro Rith [app]
+  `(f/run ~app))
+
+;; Layout
+(defmacro Colún [& {:keys [páistí príomh-ais tras-ais] :as opts}]
+  `(m/Column
+    ~@(when (contains? opts :páistí) ['.children páistí])
+    ~@(when (contains? opts :príomh-ais) ['.mainAxisAlignment príomh-ais])
+    ~@(when (contains? opts :tras-ais) ['.crossAxisAlignment tras-ais])))
+
+(defmacro Ró [& {:keys [páistí príomh-ais tras-ais] :as opts}]
+  `(m/Row
+    ~@(when (contains? opts :páistí) ['.children páistí])
+    ~@(when (contains? opts :príomh-ais) ['.mainAxisAlignment príomh-ais])
+    ~@(when (contains? opts :tras-ais) ['.crossAxisAlignment tras-ais])))
+
+(def AilíniúTimfhilleadh m/WrapAlignment)
+(def AilíniúTimfhilleadh.center m.WrapAlignment/center)
+
+(defmacro Timfhilleadh [& {:keys [páistí ailíniú] :as opts}]
+  `(m/Wrap
+    ~@(when (contains? opts :páistí) ['.children páistí])
+    ~@(when (contains? opts :ailíniú) ['.alignment ailíniú])))
+
+(defmacro Bosca [& {:keys [dath páiste stuáil corrlach ailíniú maisiú airde leithead] :as opts}]
+  `(m/Container
+    ~@(when (contains? opts :dath) ['.color dath])
+    ~@(when (contains? opts :páiste) ['.child páiste])
+    ~@(when (contains? opts :stuáil) ['.padding stuáil])
+    ~@(when (contains? opts :corrlach) ['.margin corrlach])
+    ~@(when (contains? opts :ailíniú) ['.alignment ailíniú])
+    ~@(when (contains? opts :maisiú) ['.decoration maisiú])
+    ~@(when (contains? opts :airde) ['.height airde])
+    ~@(when (contains? opts :leithead) ['.width leithead])))
+
+(defmacro BoscaMéide [& {:keys [airde leithead páiste] :as opts}]
+  `(m/SizedBox
+    ~@(when (contains? opts :airde) ['.height airde])
+    ~@(when (contains? opts :leithead) ['.width leithead])
+    ~@(when (contains? opts :páiste) ['.child páiste])))
+
+(defmacro Lárionad [& {:keys [páiste] :as opts}] ;; Renamed from Lár to avoid conflict with enum Lár
+  `(m/Center
+    ~@(when (contains? opts :páiste) ['.child páiste])))
+
+(defmacro Cruach [& {:keys [páistí ailíniú] :as opts}]
+  `(m/Stack
+    ~@(when (contains? opts :páistí) ['.children páistí])
+    ~@(when (contains? opts :ailíniú) ['.alignment ailíniú])))
+
+(defmacro Leathnaithe [& {:keys [páiste] :as opts}]
+  `(m/Expanded
+    ~@(when (contains? opts :páiste) ['.child páiste])))
+
+;; Basic Widgets
+;; Text is positional + named
+(defmacro Téacs [data & {:keys [stíl] :as opts}]
+  `(m/Text ~data
+           ~@(when (contains? opts :stíl) ['.style stíl])))
+
+(defmacro Deilbhín [icon & {:keys [dath méid] :as opts}]
+  `(m/Icon ~icon
+           ~@(when (contains? opts :dath) ['.color dath])
+           ~@(when (contains? opts :méid) ['.size méid])))
+
+(defmacro Íomhá [image & {:keys [oiriúint] :as opts}]
+  `(m/Image
+    .image ~image
+    ~@(when (contains? opts :oiriúint) ['.fit oiriúint])))
+
+;; Scaffold & Navigation
+(defmacro Scafall [& {:keys [corp barra cnaipeSnámh tarraiceán] :as opts}]
+  `(m/Scaffold
+    ~@(when (contains? opts :corp) ['.body corp])
+    ~@(when (contains? opts :barra) ['.appBar barra])
+    ~@(when (contains? opts :cnaipeSnámh) ['.floatingActionButton cnaipeSnámh])
+    ~@(when (contains? opts :tarraiceán) ['.drawer tarraiceán])))
+
+(defmacro BarraFeidhmchláir [& {:keys [teideal gníomhartha] :as opts}]
+  `(m/AppBar
+    ~@(when (contains? opts :teideal) ['.title teideal])
+    ~@(when (contains? opts :gníomhartha) ['.actions gníomhartha])))
+
+(defmacro CnaipeSnámh [& {:keys [páiste arBrú] :as opts}]
+  `(m/FloatingActionButton
+    ~@(when (contains? opts :páiste) ['.child páiste])
+    ~@(when (contains? opts :arBrú) ['.onPressed arBrú])))
+
+;; Buttons
+(defmacro CnaipeArdaithe [& {:keys [páiste arBrú] :as opts}]
+  `(m/ElevatedButton
+    ~@(when (contains? opts :páiste) ['.child páiste])
+    ~@(when (contains? opts :arBrú) ['.onPressed arBrú])))
+
+;; Inputs
+(defmacro RéimseTéacs [& {:keys [rialtóir maisiú arAthrú fócas] :as opts}]
+  `(m/TextField
+    ~@(when (contains? opts :rialtóir) ['.controller rialtóir])
+    ~@(when (contains? opts :maisiú) ['.decoration maisiú])
+    ~@(when (contains? opts :arAthrú) ['.onChanged arAthrú])
+    ~@(when (contains? opts :fócas) ['.focusNode fócas])))
+
+(defmacro Ticbhosca [& {:keys [luach arAthrú] :as opts}]
+  `(m/Checkbox
+    ~@(when (contains? opts :luach) ['.value luach])
+    ~@(when (contains? opts :arAthrú) ['.onChanged arAthrú])))
+
+;; Lists
+(defmacro LiostaAmharc [& {:keys [páistí] :as opts}]
+  `(m/ListView
+    ~@(when (contains? opts :páistí) ['.children páistí])))
+
+;; Utils
+(defmacro Priontáil [& args]
+  `(println ~@args))
+
+(defmacro Sainigh [name & body]
+  `(defn ~name ~@body))
+
+(defmacro Feidhm [& args]
+  `(fn ~@args))
+
+(defmacro LeHaghaidh [& args]
+  `(for ~@args))
+
+;; State Management
+(defmacro Adamh [x]
+  `(atom ~x))
+
+(defmacro Babhtáil! [& args]
+  `(swap! ~@args))
+
+(defmacro Athshocraigh! [& args]
+  `(reset! ~@args))
+
+(defmacro Giuirléid [bindings & body]
+  `(f/widget ~bindings ~@body))
+
+;; Loighic
+(def Fíor true)
+(def Bréagach false)
+
+(defmacro Má [& args]
+  `(if ~@args))
+
+(defmacro Lig [& args]
+  `(let ~@args))
+
+(defmacro Ní [& args]
+  `(not ~@args))
+
+(defmacro Agus [& args]
+  `(and ~@args))
+
+(defmacro Nó [& args]
+  `(or ~@args))
+
+(defmacro Líon [& args]
+  `(count ~@args))
+
+(defmacro Socraigh! [& args]
+  `(set! ~@args))
+
+(defmacro Déan [& args]
+  `(do ~@args))
+
+(defmacro Nuair [& args]
+  `(when ~@args))
+
+(defmacro Faigh [& args]
+  `(get ~@args))
+
+(defmacro Folamh? [& args]
+  `(empty? ~@args))
+
+(def Faic nil)
+
+;; Flutter Types & Macros
+(defmacro Corrlach [& {:keys [uile] :as opts}]
+  (if uile
+    `(m/EdgeInsets.all ~uile)
+    `(m/EdgeInsets
+       ;; Add other constructors as needed, defaulting to all for now or empty
+      )))
+
+;; Helper for EdgeInsets.all
+(defmacro Corrlach.uile [val]
+  `(m/EdgeInsets.all ~val))
+
+(def Ailíniú m/Alignment)
+(def Ailíniú.lár m.Alignment/center)
+
+(defmacro MaisiúBosca [& {:keys [dath ga imill] :as opts}]
+  `(m/BoxDecoration
+    ~@(when (contains? opts :dath) ['.color dath])
+    ~@(when (contains? opts :ga) ['.borderRadius ga])
+    ~@(when (contains? opts :imill) ['.border imill])))
+
+(defmacro GaRediúis [& {:keys [cruinn] :as opts}]
+  (if cruinn
+    `(m/BorderRadius.circular ~cruinn)
+    `(m/BorderRadius.all m/Radius.zero))) ;; Placeholder
+
+(defmacro GaRediúis.cruinn [val]
+  `(m/BorderRadius.circular ~val))
+
+(defmacro Imlíne [& {:keys [uile dath leithead] :as opts}]
+  (if uile
+    `(m/Border.all
+      ~@(when (contains? opts :dath) ['.color dath])
+      ~@(when (contains? opts :leithead) ['.width leithead]))
+    `(m/Border)))
+
+(defmacro Imlíne.uile [& {:keys [dath leithead] :as opts}]
+  `(m/Border.all
+    ~@(when (contains? opts :dath) ['.color dath])
+    ~@(when (contains? opts :leithead) ['.width leithead])))
+
+(defmacro RialtóirTéacs []
+  `(m/TextEditingController))
+
+(defmacro NódFócais []
+  `(m/FocusNode))
+
+(defmacro LeTeimhneacht [dath luach]
+  `(.withOpacity ^m/Color ~dath ~luach))
+
+(defmacro Teimhneacht [& {:keys [teimhneacht páiste] :as opts}]
+  `(m/Opacity
+    ~@(when (contains? opts :teimhneacht) ['.opacity teimhneacht])
+    ~@(when (contains? opts :páiste) ['.child páiste])))
+
+(defmacro MaisiúIonchuir [& {:keys [imill] :as opts}]
+  `(m/InputDecoration
+    ~@(when (contains? opts :imill) ['.border imill])))
+
+(def ImlíneIonchuir m/InputBorder)
+(def ImlíneIonchuir.faic m.InputBorder/none)
+
+(defmacro BrathadóirGotha [& {:keys [arBrú páiste] :as opts}]
+  `(m/GestureDetector
+    ~@(when (contains? opts :arBrú) ['.onTap arBrú])
+    ~@(when (contains? opts :páiste) ['.child páiste])))
+
+(defmacro Roghnúchán [& {:keys [bonn fairsinge] :as opts}]
+  `(m/TextSelection
+    ~@(when (contains? opts :bonn) ['.baseOffset bonn])
+    ~@(when (contains? opts :fairsinge) ['.extentOffset fairsinge])))
+
+(defmacro RoghnúchánÓIonad [ionad]
+  `(m/TextSelection.fromPosition ~ionad))
+
+(defmacro IonadTéacs [& {:keys [fritháireamh] :as opts}]
+  `(m/TextPosition .offset ~fritháireamh))
+
+(defmacro IonadTéacsFritháireamh [val]
+  `(m/TextPosition .offset ~val))
+
+;; Time & Async
+(defmacro Tréimhse [& {:keys [soicindí milleasoicindí]}]
+  `(~'Duration
+    ~@(when soicindí ['.seconds soicindí])
+    ~@(when milleasoicindí ['.milliseconds milleasoicindí])))
+
+(defmacro Moilligh [tréimhse & body]
+  `(~'Future.delayed ~tréimhse (Feidhm [] ~@body)))
+
+;; String & Core
+(defmacro CásUachtair [s]
+  `(str/upper-case ~s))
+
+(defmacro CásÍochtair [s]
+  `(.toLowerCase ^String ~s))
+
+(defmacro MarThéacs [& args]
+  `(str ~@args))
+
+(defmacro Raon [& args]
+  `(range ~@args))
+
+(def Nuashonraigh update)
+
+(def Comhcheangail assoc)
+
+(def Méadaigh inc)
+
+;; Controller Helpers
+(defmacro Glan! [rialtóir]
+  `(.clear ~rialtóir))
+
+(defmacro IarrFócas! [nód]
+  `(.requestFocus ~nód))
+
+(defmacro TaispeáinMéarchlár! []
+  `(do
+     (.invokeMethod seirbhísí/SystemChannels.textInput "TextInput.show")
+     nil))
+
+(defmacro SocraighTéacs! [rialtóir luach]
+  `(set! (.-text ~rialtóir) ~luach))
+
+(defmacro SocraighRoghnúchán! [rialtóir luach]
+  `(set! (.-selection ~rialtóir) ~luach))
