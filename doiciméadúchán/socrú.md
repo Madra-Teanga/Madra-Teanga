@@ -25,7 +25,7 @@ Tá an tionscadal seo tógtha le **ClojureDart**. Beidh ort na rudaí seo a lean
     ```bash
     clj -M:cljd flutter run
     ```
-    Má tá tú ag rith an t-aip macOS, beidh ort `clj -M:cljd flutter` a úsáid ina ionad.
+    Má tá tú ag rith an t-aip Linux nó macOS, beidh ort `clj -M:cljd flutter` a úsáid ina ionad.
 
 ## Cumraíocht aipe dheisce macOS
 
@@ -47,3 +47,11 @@ Má tá tú ag úsáid `ruby` agus `gem` an córais, beidh ort é sin a rith le 
 Áfach, má shuiteálann tú iad le brew, beidh ort na rudaí seo a leanas a chur le d'athróg PATH:
 - `/opt/homebrew/opt/ruby/bin`
 - `/opt/homebrew/lib/ruby/gems/4.0.0/bin` nó cibé áit a bhfuil an comhad dénártha `pod` ar do chóras.
+
+## Linux
+
+Tá gstreamer, gst-plugins-base agus libunwind de dhíth ort.
+Is féidir leat an comhéadan suiteála a shocrú go háit éigin eile leis an ordú seo:
+```bash
+export CMAKE_INSTALL_PREFIX=/home/mise/madra-teanga
+```
