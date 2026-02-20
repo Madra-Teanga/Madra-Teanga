@@ -41,10 +41,11 @@
    ;; If we are starting a new word (typed is empty) but the controller has old text, clear it.
    ;; This prevents "carrying over" typed text to the next word.
    (let [_ (when (and (= mode :building) card (str/blank? typed) (not (str/blank? (.-text ctrl))))
-             (.-text! ctrl ""))]
+             (.-text! ctrl ""))
+         themeMode (:mode theme-state)]
 
      (m/Scaffold
-      .appBar (m/AppBar .title (m/Text "Madra Teanga"))
+      .appBar (m/AppBar .title (m/Text "Madra Teanga") .actions [(theme-toggle themeMode)])
       .body
       ;; Switch based on the current mode of the application.
       (case mode
