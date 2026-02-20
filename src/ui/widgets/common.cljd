@@ -1,8 +1,8 @@
-(ns madra.ui.widgets.common
+(ns ui.widgets.common
   (:require ["package:flutter/material.dart" :as m]
             [clojure.string :as str]
             [hti.re-dash :as rd]
-            [madra.app.events :as events]))
+            [app.events :as events]))
 
 ;; Map for handling Irish accents (fadas). Used to leniently check answers.
 (def fada-map

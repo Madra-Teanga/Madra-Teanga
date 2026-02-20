@@ -1,6 +1,6 @@
-(ns madra.app.events
+(ns app.events
   (:require [hti.re-dash :as rd]
-            [madra.app.db :as db]))
+            [app.db :as db]))
 
 ;; Helper function to register all events with re-dash.
 (defn register-events! []
@@ -21,7 +21,7 @@
    ::load-deck
    (fn [_ _]
      ;; call the :madra.app.effects/fetch-deck effect with nil as argument
-     {:madra.app.effects/fetch-deck nil}))
+     {:app.effects/fetch-deck nil}))
 
   ;; Event: Set the deck data in the database.
   ;; Usage: (rd/dispatch [::set-deck received-deck-data])
@@ -46,7 +46,7 @@
          {:db (assoc db :word-idx (inc current-idx) :typed-text "")}
          ;; Case: Sentence finished. Switch to quiz mode and trigger audio effect.
          {:db (assoc db :mode :quiz :typed-text "")
-          :madra.app.effects/play-audio-fx (:audio-asset card)}))))
+          :app.effects/play-audio-fx (:audio-asset card)}))))
 
   ;; Event: Move to the next sentence (card) in the deck.
   ;; Usage: (rd/dispatch [::next-sentence])

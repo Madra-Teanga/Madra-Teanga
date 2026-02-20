@@ -1,4 +1,4 @@
-(ns madra.app.db
+(ns app.db
   ;; Import Dart's core library dealing with basic types like Map and List.
   )
 

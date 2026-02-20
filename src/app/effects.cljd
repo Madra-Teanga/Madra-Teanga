@@ -1,9 +1,9 @@
-(ns madra.app.effects
+(ns app.effects
   (:require ["package:audioplayers/audioplayers.dart" :as audio]
             ["package:flutter/services.dart" :as services]
             ["dart:convert" :as convert]
             [hti.re-dash :as rd]
-            [madra.app.db :as db])) ;; We dispatch to :madra.app.events/set-deck dynamically
+            [app.db :as db])) ;; We dispatch to :madra.app.events/set-deck dynamically
 
 ;; 1. AUDIO UTILS
 ;; A simple helper function to play an audio file from the assets.
@@ -27,7 +27,7 @@
                         clj-data (db/deep-convert raw-data)]
                     ;; Dispatch an event to update the DB with the loaded data.
                     ;; We use the fully qualified keyword to avoid circular dependency with events ns.
-                    (rd/dispatch [:madra.app.events/set-deck clj-data]))))
+                    (rd/dispatch [:app.events/set-deck clj-data]))))
          ;; Handle any errors during loading.
          (.catchError (fn [err]
                         (println "Error loading deck:" err))))))

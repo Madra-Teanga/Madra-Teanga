@@ -1,4 +1,4 @@
-(ns madra.app.subs
+(ns app.subs
   (:require [hti.re-dash :as rd]))
 
 ;; Register all subscriptions.

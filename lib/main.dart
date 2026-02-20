@@ -1,1 +1,1 @@
-export "cljd-out/madra/main.dart" show main;
+export "cljd-out/main.dart" show main;

@@ -1,11 +1,11 @@
-(ns madra.ui.screens.lessons
+(ns ui.screens.lessons
   (:require ["package:flutter/material.dart" :as m]
             [cljd.flutter :as f]
             [clojure.string :as str]
             [hti.re-dash :as rd]
-            [madra.app.events :as events]
-            [madra.app.subs :as subs]
-            [madra.ui.widgets.common :as widgets]))
+            [app.events :as events]
+            [app.subs :as subs]
+            [ui.widgets.common :as widgets]))
 
 ;; The main screen for the lessons feature.
 (defn lessons-screen []

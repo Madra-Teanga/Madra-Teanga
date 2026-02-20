@@ -1,14 +1,14 @@
-(ns madra.main
+(ns main
   ;; Require the necessary namespaces.
   ;; hti.re-dash is the library for state management (like re-frame).
   ;; madra.app.* namespaces contain our app logic (events, subs, effects).
   ;; madra.ui.screens.lessons is our main UI screen.
   (:require [hti.re-dash :as rd]
             ["package:flutter/material.dart" :as m]
-            [madra.app.events :as events]
-            [madra.app.subs :as subs]
-            [madra.app.effects :as effects]
-            [madra.ui.screens.lessons :as lessons]))
+            [app.events :as events]
+            [app.subs :as subs]
+            [app.effects :as effects]
+            [ui.screens.lessons :as lessons]))
 
 ;; The main entry point of the application.
 (defn main []
