@@ -1,0 +1,6 @@
+(ns routing.state)
+
+(def state
+  (atom {:current-view :route/home
+         :history []
+         :params {}}))

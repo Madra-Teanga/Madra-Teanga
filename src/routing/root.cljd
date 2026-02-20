@@ -1,0 +1,23 @@
+(ns routing.root
+  (:require [cljd.flutter :as f]
+            ["package:flutter/material.dart" :as m]
+            [routing.state :as router-state]
+            [theme.state :as theme-state]
+            [theme.controller :as theme-ctrl]
+            [routing.routes :as routes]))
+
+(defn view []
+  (f/widget
+   :watch [router-state router-state/state
+           theme-state theme-state/state]
+   (let [current-route (:current-view router-state)
+         theme-mode (:mode theme-state)
+         current-widget-fn (get routes/route-map current-route)]
+     (m/MaterialApp
+      .title "Madra Teanga"
+      .theme (theme-ctrl/mode-setting theme-mode)
+      .home (if current-widget-fn
+              (current-widget-fn)
+              (m/Center
+               .child (m/Text (str "Route not found: " current-route))))))))
+

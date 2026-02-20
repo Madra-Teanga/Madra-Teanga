@@ -1,0 +1,8 @@
+(ns routing.routes
+  (:require
+   [ui.screens.lessons :as lessons]))
+
+(def route-map
+  {:route/home lessons/lessons-screen})
+
+

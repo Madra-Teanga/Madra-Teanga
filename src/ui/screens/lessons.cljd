@@ -1,11 +1,21 @@
 (ns ui.screens.lessons
-  (:require ["package:flutter/material.dart" :as m]
-            [cljd.flutter :as f]
-            [clojure.string :as str]
-            [hti.re-dash :as rd]
-            [app.events :as events]
-            [app.subs :as subs]
-            [ui.widgets.common :as widgets]))
+  (:require
+   ["package:flutter/material.dart" :as m]
+   [app.events :as events]
+   [app.subs :as subs]
+   [cljd.flutter :as f]
+   [clojure.string :as str]
+   [hti.re-dash :as rd]
+   [theme.controller :as theme-ctrl]
+   [theme.state :as theme-state]
+   [ui.widgets.common :as widgets]))
+
+(defn theme-toggle [mode]
+  (m/IconButton
+   .icon (if (= mode :light)
+           (m/Icon m.Icons/dark_mode)
+           (m/Icon m.Icons/light_mode))
+   .onPressed #(theme-ctrl/toggle-mode!)))
 
 ;; The main screen for the lessons feature.
 (defn lessons-screen []
@@ -13,11 +23,13 @@
   (f/widget
    ;; :watch lets us subscribe to re-dash subscriptions.
    ;; The component will re-render whenever any of these values change.
+
    :watch [mode (rd/subscribe [::subs/mode])
            card (rd/subscribe [::subs/current-card])
            {:keys [word literal]} (rd/subscribe [::subs/current-target])
            typed (rd/subscribe [::subs/typed-text])
            word-idx (rd/subscribe [::subs/word-idx])
+           theme-state theme-state/state
            show-hints (rd/subscribe [::subs/show-hints])
            wrong-guesses (rd/subscribe [::subs/quiz-wrong-guesses])
            solved? (rd/subscribe [::subs/quiz-solved?])]
@@ -30,8 +42,9 @@
    ;; This prevents "carrying over" typed text to the next word.
    (let [_ (when (and (= mode :building) card (str/blank? typed) (not (str/blank? (.-text ctrl))))
              (.-text! ctrl ""))]
+
      (m/Scaffold
-      .appBar (m/AppBar .title (m/Text "Béarla"))
+      .appBar (m/AppBar .title (m/Text "Madra Teanga"))
       .body
       ;; Switch based on the current mode of the application.
       (case mode

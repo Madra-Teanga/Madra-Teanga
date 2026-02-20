@@ -1,17 +1,14 @@
 (ns main
-  ;; Require the necessary namespaces.
-  ;; hti.re-dash is the library for state management (like re-frame).
-  ;; madra.app.* namespaces contain our app logic (events, subs, effects).
-  ;; madra.ui.screens.lessons is our main UI screen.
   (:require [hti.re-dash :as rd]
             ["package:flutter/material.dart" :as m]
+            [routing.root :as router]
             [app.events :as events]
             [app.subs :as subs]
-            [app.effects :as effects]
-            [ui.screens.lessons :as lessons]))
+            [app.effects :as effects]))
 
 ;; The main entry point of the application.
 (defn main []
+
   ;; 1. Register all the event handlers (events.cljd).
   ;;    These handle changes to the application state.
   (events/register-events!)
@@ -37,6 +34,4 @@
   ;;    m/MaterialApp sets up the material design theme and routing.
   ;;    .home sets the first screen to be displayed (our lessons screen).
   (m/runApp
-   (m/MaterialApp
-    .title "Béarla"
-    .home (lessons/lessons-screen))))
+   (router/view)))

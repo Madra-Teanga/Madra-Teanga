@@ -1,6 +1,6 @@
 (ns theme.controller
   (:require [theme.state :as s]
-            [theme.tokens.cljd :as t]
+            [theme.tokens :as t]
             ["package:flutter/material.dart" :as m]))
 
 (defn mode-setting [mode]
@@ -10,8 +10,11 @@
      .primaryColor (if light?
                      (:brand-primary t/colors)
                      (:brand-secondary t/colors))
-     .appBarTheme (m/appBarTheme
+     .appBarTheme (m/AppBarTheme
                    .backgroundColor (if light?
                                       (:brand-primary t/colors)
                                       (:surface-dark t/colors))
                    .foregroundColor m.Colors/white))))
+
+(defn toggle-mode! []
+  (swap! s/state update :mode {:light :dark :dark :light}))

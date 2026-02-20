@@ -1,0 +1,28 @@
+(ns routing.home
+  (:require
+   ["package:flutter/material.dart" :as m]
+   [cljd.flutter :as f]
+   [theme.controller :as theme-ctrl]
+   [theme.state :as theme-state]
+   [ui.screens.lessons :as lessons]))
+
+;; --- Components ---
+
+(defn theme-toggle [mode]
+  (m/IconButton
+   .icon (if (= mode :light)
+           (m/Icon m.Icons/dark_mode)
+           (m/Icon m.Icons/light_mode))
+   .onPressed #(theme-ctrl/toggle-mode!)))
+
+;; --- Main Screen ---
+
+(defn home-screen []
+  (f/widget
+   :watch [theme-state theme-state/state]
+   (let [mode  (:mode theme-state)]
+     (m/Scaffold
+      .appBar (m/AppBar
+               .title (m/Text "My Notes")
+               .actions [(theme-toggle mode)])
+      .body (lessons/lessons-screen)))))
