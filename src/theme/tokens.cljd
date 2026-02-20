@@ -1,0 +1,9 @@
+(ns theme.tokens
+  (:require ["package:flutter/material.dart" :as m]))
+
+;;Define the theme colors
+(def colors
+  {:brand-primary m.Colors/indigo
+   :brand-secondary m.Colors/pinkAccent
+   :surface-light  m.Colors/white
+   :surfave-dark  (m/Color 0xFF111111)})

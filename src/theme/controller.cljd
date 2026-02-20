@@ -1,0 +1,17 @@
+(ns theme.controller
+  (:require [theme.state :as s]
+            [theme.tokens.cljd :as t]
+            ["package:flutter/material.dart" :as m]))
+
+(defn mode-setting [mode]
+  (let [light? (= mode :light)]
+    (m/ThemeData
+     .brightness (if light? m.Brightness/light m.Brightness/dark)
+     .primaryColor (if light?
+                     (:brand-primary t/colors)
+                     (:brand-secondary t/colors))
+     .appBarTheme (m/appBarTheme
+                   .backgroundColor (if light?
+                                      (:brand-primary t/colors)
+                                      (:surface-dark t/colors))
+                   .foregroundColor m.Colors/white))))

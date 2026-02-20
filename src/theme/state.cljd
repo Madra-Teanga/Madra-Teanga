@@ -1,0 +1,4 @@
+(ns theme.state)
+
+(def state
+  (atom {:mode :light}))
