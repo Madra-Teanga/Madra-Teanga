@@ -63,8 +63,7 @@ diagnostics.txt
 current_log.txt
 lsp.log
 
-# dot and lock files
-pubspeck.lock
+pubspec.lock
 
 # Secrets
 .env
