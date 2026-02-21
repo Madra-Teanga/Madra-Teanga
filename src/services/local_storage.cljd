@@ -1,0 +1,12 @@
+(ns services.local-storage
+  (:require ["package:shared_preferences/shared_preferences.dart" :as store]
+            ["dart:convert" :as convert]))
+
+(defn ^:async set-value! [key value]
+  (let [p (await (store/SharedPreferences.getInstance))]
+    (.setString p key (convert/jsonEncode value))))
+
+(defn ^:async get-value [key]
+  (let [p (await (store/SharedPreferences.getInstance))]
+    (some-> (.getString p key)
+            convert/jsonDecode)))

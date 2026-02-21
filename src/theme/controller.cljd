@@ -1,6 +1,7 @@
 (ns theme.controller
   (:require [theme.state :as s]
             [theme.tokens :as t]
+            [services.local_storage :as local_store]
             ["package:flutter/material.dart" :as m]))
 
 (defn mode-setting [mode]
@@ -18,3 +19,14 @@
 
 (defn toggle-mode! []
   (swap! s/state update :mode {:light :dark :dark :light}))
+
+(defn ^:async load-mode! []
+  (try
+    (let [mode-str (await (local_store/get-value "theme_mode"))
+          mode (if mode-str (keyword mode-str) :light)]
+      (swap! s/state assoc :mode mode))
+    (catch Object _
+      (swap! s/state assoc :mode :light)))
+  (add-watch s/state :persist
+             (fn [_ _ _ new-state]
+               (local_store/set-value! "theme_mode" (name (:mode new-state))))))

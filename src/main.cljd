@@ -1,6 +1,7 @@
 (ns main
   (:require [hti.re-dash :as rd]
             ["package:flutter/material.dart" :as m]
+            [theme.controller :as theme]
             [routing.root :as router]
             [app.events :as events]
             [app.subs :as subs]
@@ -33,5 +34,7 @@
   ;;    m/runApp starts the Flutter engine.
   ;;    m/MaterialApp sets up the material design theme and routing.
   ;;    .home sets the first screen to be displayed (our lessons screen).
+  (m/WidgetsFlutterBinding.ensureInitialized)
+  (theme/load-mode!)
   (m/runApp
    (router/view)))
