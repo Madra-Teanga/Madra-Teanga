@@ -18,7 +18,7 @@
 
 (defn ^:async load-deck! []
   (try
-    (let [json-str (await (.loadString services/rootBundle "asset/deck.json"))
+    (let [json-str (await (.loadString services/rootBundle "deck.json"))
           raw-data (convert/jsonDecode json-str)
           clj-date (deep-convert raw-data)]
       (swap! s/state assoc

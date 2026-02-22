@@ -1,40 +1,21 @@
 (ns main
-  (:require [hti.re-dash :as rd]
-            ["package:flutter/material.dart" :as m]
-            [theme.controller :as theme]
-            [routing.root :as router]
-            [app.events :as events]
-            [app.subs :as subs]
-            [app.effects :as effects]))
+  (:require
+   ["package:flutter/material.dart" :as m]
+   [features.lessons.controller :as lessons-ctrl]
+   [routing.root :as router]
+   [theme.controller :as theme]))
 
 ;; The main entry point of the application.
 (defn main []
-
-  ;; 1. Register all the event handlers (events.cljd).
-  ;;    These handle changes to the application state.
-  (events/register-events!)
-
-  ;; 2. Register all the subscriptions (subs.cljd).
-  ;;    These allow the UI to listen to parts of the application state.
-  (subs/register-subs!)
-
-  ;; 3. Register all the side effects (effects.cljd).
-  ;;    These handle things like loading files or playing audio.
-  (effects/register-effects!)
-
-  ;; 4. Dispatch the initialization event.
-  ;;    This sets the initial state of the database.
-  (rd/dispatch [::events/init])
-
-  ;; 5. Dispatch the deck loading event.
-  ;;    This triggers a side effect to load the 'assets/deck.json' file.
-  (rd/dispatch [::events/load-deck])
-
-  ;; 6. Run the Flutter application.
-  ;;    m/runApp starts the Flutter engine.
-  ;;    m/MaterialApp sets up the material design theme and routing.
-  ;;    .home sets the first screen to be displayed (our lessons screen).
+  ;; 1. Initialize Flutter and Theme
   (m/WidgetsFlutterBinding.ensureInitialized)
   (theme/load-mode!)
+
+  ;; 2. Initialize our new domain state and load the deck
+  ;;    This replaces all the old re-dash register/dispatch boilerplate!
+  (lessons-ctrl/init!)
+  (lessons-ctrl/load-deck!)
+
+  ;; 3. Run the Flutter application
   (m/runApp
    (router/view)))

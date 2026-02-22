@@ -1,0 +1,92 @@
+(ns features.lessons.ui.screens.lessons-screen
+  (:require
+   ["package:flutter/material.dart" :as m]
+   [cljd.flutter :as f]
+   [clojure.string :as str]
+   [features.lessons.state :as lessons-state]
+   [features.lessons.controller :as lessons-ctrl]
+   [theme.state :as theme-state]
+   [theme.controller :as theme-ctrl]
+   [features.lessons.ui.widgets.components :as widgets]))
+
+(defn theme-toggle [mode]
+  (m/IconButton
+   .icon (if (= mode :light) (m/Icon m.Icons/dark_mode) (m/Icon m.Icons/light_mode))
+   .onPressed #(theme-ctrl/toggle-mode!)))
+
+(defn quiz-view [card wrong-guesses solved?]
+  (f/widget
+   (m/Center)
+   (m/Column
+    .mainAxisAlignment m/MainAxisAlignment.center
+    .children [(m/Text (str/join " " (:irish card))
+                       .style (m/TextStyle .fontSize 32 .color m/Colors.green .fontWeight m/FontWeight.bold))
+               (m/SizedBox .height 50)
+               (widgets/quiz-widget (:english card) (:options card) wrong-guesses solved?)])))
+
+(defn building-view [card word-idx typed-text show-hints ctrl is-match]
+  (let [target-word     (get (:irish card) word-idx)
+        target-literal  (get (:literals card) word-idx)
+        literals        (subvec (:literals card) 0 word-idx)
+        completed-words (subvec (:irish card) 0 word-idx)]
+    (f/widget
+     (m/Padding .padding (m/EdgeInsets.all 16))
+     (m/Column
+      .mainAxisAlignment m/MainAxisAlignment.center
+      .children [(widgets/built-sentence-display completed-words literals)
+                 (m/SizedBox .height 60)
+                 (m/Row
+                  .mainAxisAlignment m/MainAxisAlignment.center
+                  .children [(m/Text (str "Type: \"" target-literal "\"")
+                                     .style (m/TextStyle .fontStyle m/FontStyle.italic .fontSize 18 .color m/Colors.grey))
+                             (m/SizedBox .width 10)
+                             (m/IconButton
+                              .icon (m/Icon (if show-hints m/Icons.lightbulb m/Icons.lightbulb_outline))
+                              .color (if show-hints m/Colors.orange m/Colors.grey)
+                              .onPressed #(lessons-ctrl/toggle-hint!))])
+                 (m/SizedBox .height 20)
+                 (m/Stack
+                  .alignment m/Alignment.center
+                  .children [(m/Row
+                              .mainAxisAlignment m/MainAxisAlignment.center
+                              .children (for [i (range (count target-word))]
+                                          (let [char-target (str (get target-word i))
+                                                char-typed  (when (< i (count typed-text)) (str (get typed-text i)))
+                                                is-focused  (= i (count typed-text))
+                                                status      (widgets/get-char-status char-target char-typed is-focused)]
+                                            (widgets/letter-box char-target status char-typed show-hints))))
+                             (f/widget
+                              (m/Opacity .opacity 0.0)
+                              (m/TextField
+                               .autofocus true
+                               .controller ctrl
+                               .textAlign m/TextAlign.center
+                               .style (m/TextStyle .fontSize 40)
+                               .onChanged #(lessons-ctrl/update-typed-text! %)
+                               .onSubmitted (fn [_] (when is-match (lessons-ctrl/advance-word!)))))])]))))
+
+(defn lessons-screen []
+  (f/widget
+   :watch [lessons lessons-state/state
+           theme   theme-state/state]
+   :managed [ctrl (m/TextEditingController)]
+
+   (let [{:keys [mode sentence-idx word-idx typed-text show-hints quiz-wrong-guesses quiz-solved? deck]} lessons
+         card        (get deck sentence-idx)
+         themeMode   (:mode theme)
+         target-word (when card (get (:irish card) word-idx))
+         is-match    (= target-word typed-text)]
+
+     ;; Sync text controller logic
+     (when (and (= mode :building) card (str/blank? typed-text) (not (str/blank? (.-text ctrl))))
+       (.clear ctrl))
+
+     (m/Scaffold
+      .appBar (m/AppBar .title (m/Text "Madra Teanga") .actions [(theme-toggle themeMode)])
+      .body
+      (case mode
+        (:loading nil) (f/widget (m/Center) (m/CircularProgressIndicator))
+        :quiz          (quiz-view card quiz-wrong-guesses quiz-solved?)
+        :building      (if (nil? card)
+                         (f/widget (m/Center) (m/Text "No deck loaded."))
+                         (building-view card word-idx typed-text show-hints ctrl is-match)))))))

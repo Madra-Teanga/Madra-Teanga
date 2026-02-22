@@ -1,0 +1,104 @@
+(ns features.lessons.ui.widgets.components
+  (:require ["package:flutter/material.dart" :as m]
+            [clojure.string :as str]
+            [cljd.flutter :as f]
+            [features.lessons.controller :as lessons-ctrl]))
+
+(def fada-map
+  {"á" "a" "é" "e" "í" "i" "ó" "o" "ú" "u"
+   "Á" "A" "É" "E" "Í" "I" "Ó" "O" "Ú" "U"})
+
+(defn strip-fadas [s]
+  (str/escape s fada-map))
+
+(defn get-char-status [target-char typed-char is-focused]
+  (cond
+    (nil? typed-char) (if is-focused :focused :empty)
+    (= target-char typed-char) :correct
+    (= (strip-fadas (str target-char))
+       (strip-fadas (str typed-char))) :fada-missing
+    :else :incorrect))
+
+(defn letter-box [char-target status typed-char show-hint]
+  (let [display-char (if (nil? typed-char)
+                       (if show-hint char-target (if (= status :focused) "" "_"))
+                       typed-char)
+        bg-color (case status
+                   :correct (.withOpacity m/Colors.green 0.2)
+                   :incorrect (.withOpacity m/Colors.red 0.2)
+                   :fada-missing (.withOpacity m/Colors.orange 0.3)
+                   :focused m/Colors.white
+                   (.withOpacity m/Colors.grey 0.2))
+        border-color (case status
+                       :correct m/Colors.green
+                       :incorrect m/Colors.red
+                       :fada-missing m/Colors.orange
+                       :focused m/Colors.blue
+                       m/Colors.grey)
+        text-color (cond
+                     (and (nil? typed-char) show-hint) (.withOpacity m/Colors.grey 0.5)
+                     (= status :correct) m/Colors.green
+                     (= status :incorrect) m/Colors.red
+                     :else m/Colors.black)]
+    (m/Container
+     .width 36.0
+     .height 52.0
+     .margin (m/EdgeInsets.symmetric .horizontal 4.0)
+     .alignment m/Alignment.center
+     .decoration (m/BoxDecoration
+                  .color bg-color
+                  .borderRadius (m/BorderRadius.circular 6.0)
+                  .border (m/Border.all .color border-color .width 2.0))
+     .child (m/Text display-char
+                    .style (m/TextStyle
+                            .fontSize 24.0
+                            .fontWeight m/FontWeight.bold
+                            .color text-color)))))
+
+(defn built-sentence-display [completed-words literals]
+  (m/Wrap
+   .alignment m/WrapAlignment.center
+   .spacing 8.0
+   .children (for [[word literal] (map vector completed-words literals)]
+               (m/Column
+                .mainAxisSize m/MainAxisSize.min
+                .children [(m/Chip
+                            .label (m/Text word .style (m/TextStyle .color m/Colors.white))
+                            .backgroundColor m/Colors.green)
+                           (m/Chip
+                            .label (m/Text literal .style (m/TextStyle .color m/Colors.white))
+                            .backgroundColor m/Colors.grey)]))))
+
+(defn quiz-widget [correct-answer options wrong-guesses solved?]
+  (f/widget ;; <-- Change this from f/nest to f/widget
+   (m/Container .padding (m/EdgeInsets.all 20))
+   (m/Column
+    .mainAxisSize m/MainAxisSize.min
+    .children [(m/Text "Translate the full sentence:"
+                       .style (m/TextStyle .fontSize 20 .fontWeight m/FontWeight.bold))
+               (m/SizedBox .height 30)
+               (m/Column
+                .children (for [opt options]
+                            (let [is-wrong (contains? wrong-guesses opt)
+                                  is-correct-opt (= opt correct-answer)
+                                  btn-color (cond
+                                              (and solved? is-correct-opt) m/Colors.green
+                                              is-wrong m/Colors.red.shade100
+                                              :else m/Colors.grey.shade200)
+                                  txt-color (if (and solved? is-correct-opt)
+                                              m/Colors.white
+                                              m/Colors.black)]
+                              (f/widget
+                               (m/Padding .padding (m/EdgeInsets.symmetric .vertical 8))
+                               (m/SizedBox .width double/infinity)
+                               (m/ElevatedButton
+                                .style (m/ElevatedButton.styleFrom
+                                        .padding (m/EdgeInsets.all 20)
+                                        .backgroundColor btn-color)
+                                .onPressed (fn []
+                                             (when-not solved?
+                                               (lessons-ctrl/quiz-guess! opt))))
+                               (m/Text opt
+                                       .style (m/TextStyle
+                                               .fontSize 18
+                                               .color txt-color))))))])))
