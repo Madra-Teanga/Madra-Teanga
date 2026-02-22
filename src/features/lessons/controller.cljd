@@ -1,0 +1,70 @@
+(ns features.lessons.controller
+  (:require [features.lessons.state :as s]
+            [services.audio :as audio]
+            ["package:flutter/services.dart" :as services]
+            ["dart:convert" :as convert]
+            ["dart:async" :as async]))
+
+(defn deep-convert [x]
+  (cond
+    (vector? x) (mapv deep-convert x)
+    (instance? dart:core/Map x) (into {} (map (fn [[k v]] [(keyword k) (deep-convert v)]) x))
+    (instance? dart:core/List x) (mapv deep-convert x)
+    (sequential? x) (mapv deep-convert x)
+    :else x))
+
+(defn init! []
+  (reset! s/state s/initial-state))
+
+(defn ^:async load-deck! []
+  (try
+    (let [json-str (await (.loadString services/rootBundle "asset/deck.json"))
+          raw-data (convert/jsonDecode json-str)
+          clj-date (deep-convert raw-data)]
+      (swap! s/state assoc
+             :deck clj-date
+             :mode :building
+             :sentence-idx 0
+             :word-idx 0))
+    (catch Object err
+      (println "Error loading deck:" err))))
+
+(defn advance-word! []
+  (let [current-state @s/state
+        card (get (:deck current-state) (:sentence-idx current-state))
+        total-words (count (:irish card))
+        current-idx (:word-idx current-state)]
+    (if (< (inc current-idx) total-words)
+      (swap! s/state assoc :word-idx (inc current-idx) :typed-text "")
+      (do
+        (swap! s/state assoc :mode :quiz :typed-text "")
+        (audio/play! (:audio-asset card))))))
+
+(defn next-sentence! []
+  (swap! s/state
+         (fn [db]
+           (merge db {:sentence-idx (mod (inc (:sentence-idx db)) (count (:deck db)))
+                      :word-idx 0
+                      :typed-text ""
+                      :mode :buildng
+                      :show-hints false
+                      :quiz-wrong-guesses #{}
+                      :quiz-solved? false}))))
+
+(defn toggle-hint! []
+  (swap! s/state update :show-hints not))
+
+(defn update-typed-text! [text]
+  (swap! s/state assoc :typed-text text))
+
+(defn quiz-guess! [opt]
+  (let [current-state @s/state
+        card (get (:deck current-state) (:sentence-idx current-state))
+        correct? (= opt (:english card))]
+    (if correct?
+      (do
+        (swap! s/state assoc :quiz-solved? true)
+        (async/Timer. (dart:core/Duration :milliseconds 1000)
+                      #(next-sentence!)))
+      (swap! s/state update :quiz-wrong-guesses conj opt))))
+

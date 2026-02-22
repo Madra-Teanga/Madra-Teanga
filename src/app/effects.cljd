@@ -1,16 +1,8 @@
 (ns app.effects
-  (:require ["package:audioplayers/audioplayers.dart" :as audio]
-            ["package:flutter/services.dart" :as services]
-            ["dart:convert" :as convert]
-            [hti.re-dash :as rd]
-            [app.db :as db])) ;; We dispatch to :madra.app.events/set-deck dynamically
-
-;; 1. AUDIO UTILS
-;; A simple helper function to play an audio file from the assets.
-(defn play-audio! [asset-path]
-  ;; Create a new AudioPlayer instance and immediately play the source.
-  (doto (audio/AudioPlayer)
-    (.play (audio/AssetSource asset-path))))
+  (:require             ["package:flutter/services.dart" :as services]
+                        ["dart:convert" :as convert]
+                        [hti.re-dash :as rd]
+                        [app.db :as db])) ;; We dispatch to :madra.app.events/set-deck dynamically
 
 (defn register-effects! []
   ;; Effect: Load the deck JSON file.
@@ -30,12 +22,6 @@
                     (rd/dispatch [:app.events/set-deck clj-data]))))
          ;; Handle any errors during loading.
          (.catchError (fn [err]
-                        (println "Error loading deck:" err))))))
+                        (println "Error loading deck:" err)))))))
 
-  ;; Effect: Play an audio file.
-  ;; This is cleaner than calling the function directly in an event handler because
-  ;; it keeps the event handler 'pure' (returning data descriptions of side effects).
-  (rd/reg-fx
-   ::play-audio-fx
-   (fn [asset-path]
-     (play-audio! asset-path))))
+

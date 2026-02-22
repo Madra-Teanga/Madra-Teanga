@@ -1,0 +1,6 @@
+(ns services.audio
+  (:require ["package:audioplayers/audioplayers.dart" :as audio]))
+
+(defn play! [asset-path]
+  (doto (audio/AudioPlayer)
+    (.play (audio/AssetSource asset-path))))
