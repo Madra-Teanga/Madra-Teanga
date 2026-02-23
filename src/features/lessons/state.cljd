@@ -1,5 +1,16 @@
 (ns features.lessons.state)
 
+;; The shape of the initial lessons state.
+;; Used both as the startup default and to reset state between sessions.
+;;
+;; :deck              – vector of lesson card maps loaded from deck.json
+;; :sentence-idx      – index of the currently active sentence card
+;; :word-idx          – index of the word the player is currently typing within that card
+;; :typed-text        – current value of the (hidden) text input field
+;; :mode              – :loading (deck not yet ready) | :building (word-by-word input) | :quiz (multiple choice)
+;; :show-hints        – when true, faint hint characters are shown inside the letter boxes
+;; :quiz-wrong-guesses – set of option strings the player has incorrectly chosen this round
+;; :quiz-solved?      – true once the player picks the correct quiz answer
 (def initial-state
   {:deck []
    :sentence-idx 0
@@ -10,4 +21,6 @@
    :quiz-wrong-guesses #{}
    :quiz-solved? false})
 
+;; The single source of truth for all lesson progress.
+;; Watched by the lessons screen widget; any swap! here triggers a UI rebuild.
 (def state (atom initial-state))

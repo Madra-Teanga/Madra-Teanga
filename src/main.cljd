@@ -6,16 +6,19 @@
    [theme.controller :as theme]))
 
 ;; The main entry point of the application.
+;; Initialises all subsystems in order, then hands control to Flutter.
 (defn main []
-  ;; 1. Initialize Flutter and Theme
+  ;; Required before any Flutter APIs are called.
   (m/WidgetsFlutterBinding.ensureInitialized)
+
+  ;; Load the persisted theme mode (light/dark) from local storage.
+  ;; Also wires up a watcher that saves any future mode changes automatically.
   (theme/load-mode!)
 
-  ;; 2. Initialize our new domain state and load the deck
-  ;;    This replaces all the old re-dash register/dispatch boilerplate!
+  ;; Reset the lessons atom to its initial state, then load deck.json from assets.
   (lessons-ctrl/init!)
   (lessons-ctrl/load-deck!)
 
-  ;; 3. Run the Flutter application
+  ;; Launch the Flutter widget tree. The root widget observes routing and theme atoms.
   (m/runApp
    (router/view)))

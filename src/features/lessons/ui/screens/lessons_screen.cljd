@@ -9,11 +9,15 @@
    [theme.controller :as theme-ctrl]
    [features.lessons.ui.widgets.components :as widgets]))
 
+;; App-bar action button that toggles between light and dark mode.
+;; Icon switches to reflect the mode that will be activated on press.
 (defn theme-toggle [mode]
   (m/IconButton
    .icon (if (= mode :light) (m/Icon m.Icons/dark_mode) (m/Icon m.Icons/light_mode))
    .onPressed #(theme-ctrl/toggle-mode!)))
 
+;; Renders the quiz phase of a lesson card.
+;; Shows the Irish sentence at the top for reference, then delegates to the quiz widget.
 (defn quiz-view [card wrong-guesses solved?]
   (f/widget
    (m/Center)
@@ -24,9 +28,13 @@
                (m/SizedBox .height 50)
                (widgets/quiz-widget (:english card) (:options card) wrong-guesses solved?)])))
 
+;; Renders the word-building phase of a lesson card.
+;; The player types each Irish word one at a time into a hidden text field.
+;; Letter boxes above the field show per-character feedback in real time.
 (defn building-view [card word-idx typed-text show-hints ctrl is-match]
   (let [target-word     (get (:irish card) word-idx)
         target-literal  (get (:literals card) word-idx)
+        ;; Words and literals already confirmed correct (shown as chips above).
         literals        (subvec (:literals card) 0 word-idx)
         completed-words (subvec (:irish card) 0 word-idx)]
     (f/widget
@@ -35,6 +43,7 @@
       .mainAxisAlignment m/MainAxisAlignment.center
       .children [(widgets/built-sentence-display completed-words literals)
                  (m/SizedBox .height 60)
+                 ;; Prompt showing the literal translation and hint toggle button.
                  (m/Row
                   .mainAxisAlignment m/MainAxisAlignment.center
                   .children [(m/Text (str "Type: \"" target-literal "\"")
@@ -47,7 +56,8 @@
                  (m/SizedBox .height 20)
                  (m/Stack
                   .alignment m/Alignment.center
-                  .children [(m/Row
+                  .children [;; Letter boxes displayed above the hidden text field.
+                             (m/Row
                               .mainAxisAlignment m/MainAxisAlignment.center
                               .children (for [i (range (count target-word))]
                                           (let [char-target (str (get target-word i))
@@ -55,6 +65,8 @@
                                                 is-focused  (= i (count typed-text))
                                                 status      (widgets/get-char-status char-target char-typed is-focused)]
                                             (widgets/letter-box char-target status char-typed show-hints))))
+                             ;; Invisible text field that captures keyboard input.
+                             ;; Opacity 0 keeps it off-screen while autofocus keeps the keyboard open.
                              (f/widget
                               (m/Opacity .opacity 0.0)
                               (m/TextField
@@ -65,6 +77,9 @@
                                .onChanged #(lessons-ctrl/update-typed-text! %)
                                .onSubmitted (fn [_] (when is-match (lessons-ctrl/advance-word!)))))])]))))
 
+;; The main lessons screen widget.
+;; Watches both the lessons atom and the theme atom so it rebuilds on any state change.
+;; Manages a TextEditingController via :managed so it is properly disposed of with the widget.
 (defn lessons-screen []
   (f/widget
    :watch [lessons lessons-state/state
@@ -77,7 +92,8 @@
          target-word (when card (get (:irish card) word-idx))
          is-match    (= target-word typed-text)]
 
-     ;; Sync text controller logic
+     ;; When the mode returns to :building after a quiz, clear the text controller
+     ;; so stale input doesn't appear in the new word's letter boxes.
      (when (and (= mode :building) card (str/blank? typed-text) (not (str/blank? (.-text ctrl))))
        (.clear ctrl))
 
@@ -85,6 +101,7 @@
       .appBar (m/AppBar .title (m/Text "Madra Teanga") .actions [(theme-toggle themeMode)])
       .body
       (case mode
+        ;; Show a spinner while the deck is being loaded from assets.
         (:loading nil) (f/widget (m/Center) (m/CircularProgressIndicator))
         :quiz          (quiz-view card quiz-wrong-guesses quiz-solved?)
         :building      (if (nil? card)

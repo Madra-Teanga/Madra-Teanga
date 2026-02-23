@@ -1,6 +1,11 @@
 (ns services.audio
   (:require ["package:audioplayers/audioplayers.dart" :as audio]))
 
+;; Plays an audio asset immediately.
+;; A new AudioPlayer instance is created for each call so concurrent sounds
+;; do not interrupt each other.
+;;
+;; asset-path – path relative to the assets/ directory, e.g. "audio/hello.mp3"
 (defn play! [asset-path]
   (doto (audio/AudioPlayer)
     (.play (audio/AssetSource asset-path))))
