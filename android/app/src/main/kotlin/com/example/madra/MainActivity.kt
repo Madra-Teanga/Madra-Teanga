@@ -1,4 +1,4 @@
-package com.example.cljd_hello
+package com.example.madra
 
 import io.flutter.embedding.android.FlutterActivity
 

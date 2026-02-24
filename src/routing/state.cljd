@@ -1,0 +1,13 @@
+(ns routing.state)
+
+;; The single source of truth for navigation state.
+;;
+;; :current-view – keyword identifying the active screen (see routing.routes/route-map).
+;; :history      – a stack of previous route keywords, used for back-navigation.
+;; :params       – a map of parameters passed to the current route.
+;;
+;; To navigate, swap this atom: (swap! state assoc :current-view :route/some-screen)
+(def state
+  (atom {:current-view :route/home
+         :history []
+         :params {}}))

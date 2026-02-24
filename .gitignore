@@ -63,6 +63,8 @@ diagnostics.txt
 current_log.txt
 lsp.log
 
+pubspec.lock
+
 # Secrets
 .env
 android/key.properties
