@@ -1,5 +1,5 @@
 
-(ns madra.Draíoch.leagan_amach
+(ns Draíoch.leagan_amach
   (:require ["package:flutter/material.dart" :as m]))
 
 ;; --- Alignment (Ailíniú) ---
@@ -70,8 +70,7 @@
 (defmacro Corrlach [& {:keys [uile] :as opts}]
   (if uile
     `(m/EdgeInsets.all ~uile)
-    `(m/EdgeInsets
-       )))
+    `(m/EdgeInsets)))
 
 (defmacro Corrlach.uile [val]
   `(m/EdgeInsets.all ~val))

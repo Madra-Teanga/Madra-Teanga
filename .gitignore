@@ -62,6 +62,7 @@ diagnostics.txt
 *.log
 current_log.txt
 lsp.log
+pubspec.lock
 
 # Secrets
 .env

@@ -1,0 +1,89 @@
+
+(ns madra.comhéadan.scáileáin.ceachtanna
+  (:require ["package:flutter/material.dart" :as m]
+            [clojure.string :as str]
+            [Draíoch.bunus :as b]
+            [Draíoch.leagan_amach :as l]
+            [Draíoch.eilimintí :as e]
+            [Draíoch.stát :as s]
+            [Draíoch.app :as d]
+            [feidhmchlár.teagmhais :as teagmhais]
+            [feidhmchlár.síntiúis :as síntiúis]
+            [comhéadan.giuirléidí.coitianta :as g]))
+
+;; TEAGMHAIS GAELAITHE
+(b/Sainigh scáileán-ceachtanna []
+           (b/Giuirléid
+            :watch [mód (s/Liostáil [::síntiúis/mód])
+                    cárta (s/Liostáil [::síntiúis/cárta-reatha])
+                    {:keys [focal litriúil]} (s/Liostáil [::síntiúis/sprioc-reatha])
+                    clóite (s/Liostáil [::síntiúis/téacs-clóite])
+                    innéacs-focail (s/Liostáil [::síntiúis/innéacs-focail])
+                    taispeáin-leideanna (s/Liostáil [::síntiúis/taispeáin-leideanna])
+                    tomhais-míchearta (s/Liostáil [::síntiúis/tomhais-míchearta])
+                    réitithe? (s/Liostáil [::síntiúis/réitithe?])]
+            :managed [ríaltóir (e/RialtóirTéacs)]
+
+            (b/Lig [_ (b/Nuair (b/Agus (= mód :ag-tógáil) cárta (str/blank? clóite) (not (str/blank? (.-text ríaltóir))))
+                               (b/SocraighTéacs! ríaltóir ""))]
+
+                   (d/Scafall
+                    :barra (d/BarraFeidhmchláir :teideal (e/Téacs "Gaeilge"))
+                    :corp
+                    (case mód
+                      :ag-lódáil (l/Lárionad :páiste (e/Téacs "Ag lódáil..."))
+                      nil (l/Lárionad :páiste (e/Téacs "Ag lódáil..."))
+
+                      :tráth-na-gceist
+                      (l/Lárionad
+                       :páiste (l/Colún
+                                :príomh-ais l/Lár
+                                :páistí [(e/Téacs (str/join " " (:gaeilge cárta))
+                                                  :stíl (e/StílTéacs :méidCló 32.0 :dath b/Glas :meáchanCló e/Trom))
+                                         (l/BoscaMéide :airde 50.0)
+                                         (g/giuirléid-tráth-na-gceist (:béarla cárta) (:roghanna cárta) tomhais-míchearta réitithe?)]))
+
+                      :ag-tógáil
+                      (b/Má (nil? cárta)
+                            (l/Lárionad :páiste (e/Téacs "Níl aon phaca lódáilte."))
+                            (b/Lig [litriúla (subvec (:litriúil cárta) 0 innéacs-focail)
+                                    focail-chríochnaithe (subvec (:gaeilge cárta) 0 innéacs-focail)
+                                    sprioc-fhocal focal
+                                    is-match (= sprioc-fhocal clóite)]
+
+                                   (l/Bosca
+                                    :stuáil (l/Corrlach.uile 16.0)
+                                    :páiste (l/Colún
+                                             :príomh-ais l/Lár
+                                             :páistí [(g/taispeáint-abairte-chríochnaithe focail-chríochnaithe litriúla)
+                                                      (l/BoscaMéide :airde 60.0)
+
+                                                      (l/Ró
+                                                       :príomh-ais l/Lár
+                                                       :páistí [(e/Téacs (str "Clóscríobh: \"" litriúil "\"")
+                                                                         :stíl (e/StílTéacs :méidCló 18.0 :dath b/Liath))
+                                                                (l/BoscaMéide :leithead 10.0)
+                                                                (e/CnaipeArdaithe
+                                                                 :arBrú (b/Feidhm [] (s/Seol [::teagmhais/las-leideanna]))
+                                                                 :páiste (e/Deilbhín (b/Má taispeáin-leideanna m.Icons/lightbulb m.Icons/lightbulb_outline)
+                                                                                     :dath (b/Má taispeáin-leideanna b/Oráiste b/Liath)))])
+
+                                                      (l/BoscaMéide :airde 20.0)
+
+                                                      (l/Cruach
+                                                       :ailíniú l/Ailíniú.lár
+                                                       :páistí
+                                                       [(l/Ró
+                                                         :príomh-ais l/Lár
+                                                         :páistí (b/LeHaghaidh [i (range (count sprioc-fhocal))]
+                                                                               (b/Lig [carachtar-sprioc (str (get sprioc-fhocal i))
+                                                                                       carachtar-clóite (b/Nuair (< i (count clóite)) (str (get clóite i)))
+                                                                                       tá-fócas-air (= i (count clóite))
+                                                                                       stádas (g/faigh-stádas-carachtair carachtar-sprioc carachtar-clóite tá-fócas-air)]
+                                                                                      (g/bosca-litreach carachtar-sprioc stádas carachtar-clóite taispeáin-leideanna))))
+
+                                                        (e/Teimhneacht
+                                                         :teimhneacht 0.0
+                                                         :páiste (e/RéimseTéacs
+                                                                  :rialtóir ríaltóir
+                                                                  :arAthrú (b/Feidhm [luach] (s/Seol [::teagmhais/nuashonraigh-téacs luach]))))])])))))))))

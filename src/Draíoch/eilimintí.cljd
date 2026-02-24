@@ -1,5 +1,5 @@
 
-(ns madra.Draíoch.eilimintí
+(ns Draíoch.eilimintí
   (:require ["package:flutter/material.dart" :as m]))
 
 ;; --- Text & Style ---

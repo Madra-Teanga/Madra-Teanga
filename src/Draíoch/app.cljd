@@ -1,5 +1,5 @@
 
-(ns madra.Draíoch.app
+(ns Draíoch.app
   (:require ["package:flutter/material.dart" :as m]
             [cljd.flutter :as f]))
 
