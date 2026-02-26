@@ -1,0 +1,18 @@
+(ns services.local-storage
+  (:require ["package:shared_preferences/shared_preferences.dart" :as store]
+            ["dart:convert" :as convert]))
+
+;; Persists a value to shared preferences under the given key.
+;; The value is JSON-encoded before storage so any Clojure-serialisable
+;; data structure can be saved, not just plain strings.
+(defn ^:async set-value! [key value]
+  (let [p (await (store/SharedPreferences.getInstance))]
+    (.setString p key (convert/jsonEncode value))))
+
+;; Retrieves a previously stored value by key.
+;; Returns nil if the key does not exist.
+;; The value is JSON-decoded on the way out, mirroring set-value!.
+(defn ^:async get-value [key]
+  (let [p (await (store/SharedPreferences.getInstance))]
+    (some-> (.getString p key)
+            convert/jsonDecode)))

@@ -1,0 +1,90 @@
+(ns features.lessons.controller
+  (:require [features.lessons.state :as s]
+            [services.audio :as audio]
+            ["package:flutter/services.dart" :as services]
+            ["dart:convert" :as convert]
+            ["dart:async" :as async]))
+
+;; Recursively converts a Dart data structure (Maps and Lists from JSON decoding)
+;; into idiomatic Clojure data: Dart Maps become Clojure maps with keyword keys,
+;; Dart Lists become Clojure vectors.
+(defn deep-convert [x]
+  (cond
+    (vector? x) (mapv deep-convert x)
+    (instance? dart:core/Map x) (into {} (map (fn [[k v]] [(keyword k) (deep-convert v)]) x))
+    (instance? dart:core/List x) (mapv deep-convert x)
+    (sequential? x) (mapv deep-convert x)
+    :else x))
+
+;; Resets the lessons atom to its initial state.
+;; Call this at app startup before loading the deck.
+(defn init! []
+  (reset! s/state s/initial-state))
+
+;; Loads deck.json from the app's asset bundle and populates the lessons atom.
+;; Sets :mode to :building and resets the card/word indices to 0 on success.
+;; Prints an error to the console if the file cannot be read or parsed.
+(defn ^:async load-deck! []
+  (try
+    (let [json-str (await (.loadString services/rootBundle "deck.json"))
+          raw-data (convert/jsonDecode json-str)
+          clj-date (deep-convert raw-data)]
+      (swap! s/state assoc
+             :deck clj-date
+             :mode :building
+             :sentence-idx 0
+             :word-idx 0))
+    (catch Object err
+      (println "Error loading deck:" err))))
+
+;; Advances to the next word in the current sentence.
+;; If all words have been typed, transitions to :quiz mode and plays the sentence audio.
+(defn advance-word! []
+  (let [current-state @s/state
+        card         (get (:deck current-state) (:sentence-idx current-state))
+        total-words  (count (:irish card))
+        current-idx  (:word-idx current-state)]
+    (if (< (inc current-idx) total-words)
+      ;; More words remain – advance the index and clear the input field.
+      (swap! s/state assoc :word-idx (inc current-idx) :typed-text "")
+      ;; All words typed – switch to quiz mode and play the full sentence audio.
+      (do
+        (swap! s/state assoc :mode :quiz :typed-text "")
+        (audio/play! (:audio-asset card))))))
+
+;; Moves to the next sentence card, wrapping around at the end of the deck.
+;; Resets all per-sentence state (word index, typed text, hints, quiz answers).
+(defn next-sentence! []
+  (swap! s/state
+         (fn [db]
+           (merge db {:sentence-idx    (mod (inc (:sentence-idx db)) (count (:deck db)))
+                      :word-idx        0
+                      :typed-text      ""
+                      :mode            :building
+                      :show-hints      false
+                      :quiz-wrong-guesses #{}
+                      :quiz-solved?    false}))))
+
+;; Toggles fada hint visibility on the letter boxes.
+(defn toggle-hint! []
+  (swap! s/state update :show-hints not))
+
+;; Called on every keystroke from the hidden text field.
+;; Keeps :typed-text in sync with the actual input value.
+(defn update-typed-text! [text]
+  (swap! s/state assoc :typed-text text))
+
+;; Evaluates a multiple-choice quiz answer.
+;; If correct, marks the round as solved and advances to the next sentence after
+;; a 1-second delay (giving the player time to see the success state).
+;; If wrong, records the option in :quiz-wrong-guesses so it can be highlighted red.
+(defn quiz-guess! [opt]
+  (let [current-state @s/state
+        card    (get (:deck current-state) (:sentence-idx current-state))
+        correct? (= opt (:english card))]
+    (if correct?
+      (do
+        (swap! s/state assoc :quiz-solved? true)
+        (async/Timer. (dart:core/Duration :milliseconds 1000)
+                      #(next-sentence!)))
+      (swap! s/state update :quiz-wrong-guesses conj opt))))
