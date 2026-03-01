@@ -1,5 +1,9 @@
 (ns draíocht.croí)
 
+(defmacro tús [& body]
+  `(defn ~'main []
+     ~@body))
+
 (defmacro TRANSLATE__LT [& args]
   `(< ~@args))
 
