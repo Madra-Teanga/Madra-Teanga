@@ -1,0 +1,18 @@
+(ns príomh
+  (:require
+   [features.lessons.controller :as ceachtanna]
+   [draíocht.croí :as c]
+   [draíocht.eitiltíol-abhar :as e]
+   [routing.root :as ródaire]
+   [theme.controller :as téama]))
+
+(c/sainf main []
+         (e/fan-go-réidh)
+
+         (téama/load-mode!)
+
+         (ceachtanna/init!)
+         (ceachtanna/load-deck!)
+
+         (e/ar-siúl
+          (ródaire/view)))
