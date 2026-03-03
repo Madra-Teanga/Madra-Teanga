@@ -16,7 +16,7 @@
 (defmacro TRANSLATE_and [& args]
   `(and ~@args))
 
-(defmacro TRANSLATE_atom [& args]
+(defmacro adamh [& args]
   `(atom ~@args))
 
 (defmacro TRANSLATE_await [& args]

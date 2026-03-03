@@ -13,7 +13,7 @@
 ;; Icon switches to reflect the mode that will be activated on press.
 (defn theme-toggle [mode]
   (m/IconButton
-   .icon (if (= mode :light) (m/Icon m.Icons/dark_mode) (m/Icon m.Icons/light_mode))
+   .icon (if (= mode :solais) (m/Icon m.Icons/dark_mode) (m/Icon m.Icons/light_mode))
    .onPressed #(theme-ctrl/toggle-mode!)))
 
 ;; Renders the quiz phase of a lesson card.
@@ -83,7 +83,7 @@
 (defn lessons-screen []
   (f/widget
    :watch [lessons lessons-state/state
-           theme   theme-state/state]
+           theme   theme-state/staid]
    :managed [ctrl (m/TextEditingController)]
 
    (let [{:keys [mode sentence-idx word-idx typed-text show-hints quiz-wrong-guesses quiz-solved? deck]} lessons

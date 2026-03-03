@@ -1,10 +1,5 @@
-(ns téama.staid)
+(ns téama.staid
+  (:require [draíocht.croí :as c]))
 
-;; The single source of truth for theme state.
-;;
-;; :mode – the active display mode, either :light or :dark.
-;;
-;; This atom is watched by routing.root/view, so any change triggers
-;; a full rebuild of the MaterialApp with updated ThemeData.
-(def state
-  (atom {:mode :light}))
+(c/sain staid
+        (c/adamh {:mód :solais}))

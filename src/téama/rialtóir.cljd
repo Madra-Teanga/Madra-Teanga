@@ -6,8 +6,8 @@
 
 ;; Builds a Flutter ThemeData map for the given mode keyword (:light or :dark).
 ;; Called by the root widget on every rebuild to apply the current theme.
-(defn mode-setting [mode]
-  (let [light? (= mode :light)]
+(defn mode-setting [mód]
+  (let [light? (= mód :solais)]
     (m/ThemeData
      .brightness (if light? m.Brightness/light m.Brightness/dark)
      .primaryColor (if light?
@@ -22,7 +22,7 @@
 ;; Toggles the active mode between :light and :dark.
 ;; The state watcher installed by load-mode! will persist the change automatically.
 (defn toggle-mode! []
-  (swap! s/state update :mode {:light :dark :dark :light}))
+  (swap! s/staid update :mód {:solais :dark :dark :solais}))
 
 ;; Loads the persisted theme mode from local storage on app startup.
 ;; Falls back to :light if nothing is stored or an error occurs.
@@ -31,10 +31,10 @@
 (defn ^:async load-mode! []
   (try
     (let [mode-str (await (local_store/get-value "theme_mode"))
-          mode (if mode-str (keyword mode-str) :light)]
-      (swap! s/state assoc :mode mode))
+          mode (if mode-str (keyword mode-str) :solais)]
+      (swap! s/staid assoc :mód mode))
     (catch Object _
-      (swap! s/state assoc :mode :light)))
-  (add-watch s/state :persist
+      (swap! s/staid assoc :mód :solais)))
+  (add-watch s/staid :persist
              (fn [_ _ _ new-state]
-               (local_store/set-value! "theme_mode" (name (:mode new-state))))))
+               (local_store/set-value! "theme_mode" (name (:mód new-state))))))
