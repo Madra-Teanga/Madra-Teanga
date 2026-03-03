@@ -1,9 +1,9 @@
 (ns príomh
   (:require
-   [features.lessons.controller :as ceachtanna]
+   [gnéithe.ceachtanna.rialtóir :as ceachtanna]
    [draíocht.croí :as c]
    [draíocht.eitiltíol-abhar :as e]
-   [routing.root :as ródaire]
+   [ródú.rialtóir :as ródaire]
    [téama.rialtóir :as téama]))
 
 (c/tús

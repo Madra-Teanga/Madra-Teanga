@@ -1,4 +1,4 @@
-(ns services.audio
+(ns sheirbhísí.fuaime
   (:require ["package:audioplayers/audioplayers.dart" :as audio]))
 
 ;; Plays an audio asset immediately.

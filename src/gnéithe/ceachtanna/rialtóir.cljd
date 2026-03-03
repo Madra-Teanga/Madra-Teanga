@@ -1,6 +1,6 @@
-(ns features.lessons.controller
-  (:require [features.lessons.state :as s]
-            [services.audio :as audio]
+(ns gnéithe.ceachtanna.rialtóir
+  (:require [gnéithe.ceachtanna.staid :as s]
+            [sheirbhísí.fuaime :as audio]
             ["package:flutter/services.dart" :as services]
             ["dart:convert" :as convert]
             ["dart:async" :as async]))

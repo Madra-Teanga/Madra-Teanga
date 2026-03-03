@@ -1,8 +1,8 @@
-(ns features.lessons.ui.widgets.components
+(ns features.lessons.widgets.pháirteanna
   (:require ["package:flutter/material.dart" :as m]
             [clojure.string :as str]
             [cljd.flutter :as f]
-            [features.lessons.controller :as lessons-ctrl]))
+            [gnéithe.ceachtanna.rialtóir :as lessons-ctrl]))
 
 ;; Maps Irish characters with fadas (accents) to their unaccented equivalents.
 ;; Used to give partial credit when a player types the correct letter but omits the fada.

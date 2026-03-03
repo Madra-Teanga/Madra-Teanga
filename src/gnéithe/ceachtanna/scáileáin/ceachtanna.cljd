@@ -1,13 +1,13 @@
-(ns features.lessons.ui.screens.lessons-screen
+(ns gnéithe.ceachtanna.scáileáin.ceachtanna
   (:require
    ["package:flutter/material.dart" :as m]
    [cljd.flutter :as f]
    [clojure.string :as str]
-   [features.lessons.state :as lessons-state]
-   [features.lessons.controller :as lessons-ctrl]
+   [gnéithe.ceachtanna.staid :as lessons-state]
+   [gnéithe.ceachtanna.rialtóir :as lessons-ctrl]
    [téama.staid :as theme-state]
    [téama.rialtóir :as theme-ctrl]
-   [features.lessons.ui.widgets.components :as widgets]))
+   [gnéithe.ceachtanna.giuirléidí.pháirteanna :as widgets]))
 
 ;; App-bar action button that toggles between light and dark mode.
 ;; Icon switches to reflect the mode that will be activated on press.

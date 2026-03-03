@@ -1,4 +1,4 @@
-(ns features.lessons.state)
+(ns gnéithe.staid)
 
 ;; The shape of the initial lessons state.
 ;; Used both as the startup default and to reset state between sessions.

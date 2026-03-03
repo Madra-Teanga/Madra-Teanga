@@ -1,10 +1,10 @@
-(ns routing.root
+(ns ródú.rialtóir
   (:require [cljd.flutter :as f]
             ["package:flutter/material.dart" :as m]
-            [routing.state :as router-state]
+            [ródú.staid :as router-state]
             [téama.staid :as theme-state]
             [téama.rialtóir :as theme-ctrl]
-            [routing.routes :as routes]))
+            [ródú.bealaí :as routes]))
 
 ;; The root widget of the application.
 ;; It watches both the routing atom and the theme atom, so any change to either

@@ -1,6 +1,6 @@
-(ns routing.routes
+(ns ródú.bealaí
   (:require
-   [features.lessons.ui.screens.lessons-screen :as lessons]))
+   [gnéithe.ceachtanna.scáileáin.ceachtanna :as lessons]))
 
 ;; Maps route keywords to their corresponding screen constructor functions.
 ;; To add a new screen:
