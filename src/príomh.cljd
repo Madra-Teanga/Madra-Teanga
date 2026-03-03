@@ -4,7 +4,7 @@
    [draíocht.croí :as c]
    [draíocht.eitiltíol-abhar :as e]
    [routing.root :as ródaire]
-   [theme.controller :as téama]))
+   [téama.rialtóir :as téama]))
 
 (c/tús
  (e/fan-go-réidh)

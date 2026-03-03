@@ -1,4 +1,4 @@
-(ns theme.state)
+(ns téama.staid)
 
 ;; The single source of truth for theme state.
 ;;

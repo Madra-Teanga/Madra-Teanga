@@ -5,8 +5,8 @@
    [clojure.string :as str]
    [features.lessons.state :as lessons-state]
    [features.lessons.controller :as lessons-ctrl]
-   [theme.state :as theme-state]
-   [theme.controller :as theme-ctrl]
+   [téama.staid :as theme-state]
+   [téama.rialtóir :as theme-ctrl]
    [features.lessons.ui.widgets.components :as widgets]))
 
 ;; App-bar action button that toggles between light and dark mode.

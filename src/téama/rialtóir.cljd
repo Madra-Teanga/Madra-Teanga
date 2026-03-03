@@ -1,6 +1,6 @@
-(ns theme.controller
-  (:require [theme.state :as s]
-            [theme.tokens :as t]
+(ns téama.inchinn
+  (:require [téama.staid :as s]
+            [téama.comharthaí :as t]
             [services.local_storage :as local_store]
             ["package:flutter/material.dart" :as m]))
 

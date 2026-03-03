@@ -2,8 +2,8 @@
   (:require [cljd.flutter :as f]
             ["package:flutter/material.dart" :as m]
             [routing.state :as router-state]
-            [theme.state :as theme-state]
-            [theme.controller :as theme-ctrl]
+            [téama.staid :as theme-state]
+            [téama.rialtóir :as theme-ctrl]
             [routing.routes :as routes]))
 
 ;; The root widget of the application.
