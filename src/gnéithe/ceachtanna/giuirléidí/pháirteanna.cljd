@@ -1,4 +1,4 @@
-(ns features.lessons.widgets.pháirteanna
+(ns gnéithe.ceachtanna.giuirléidí.pháirteanna
   (:require ["package:flutter/material.dart" :as m]
             [clojure.string :as str]
             [cljd.flutter :as f]
