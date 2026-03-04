@@ -19,7 +19,7 @@
 (defmacro adamh [& args]
   `(atom ~@args))
 
-(defmacro TRANSLATE_await [& args]
+(defmacro fan [& args]
   `(await ~@args))
 
 (defmacro TRANSLATE_building_view [& args]
@@ -28,7 +28,7 @@
 (defmacro TRANSLATE_case [& args]
   `(case ~@args))
 
-(defmacro TRANSLATE_catch [& args]
+(defmacro ghabháil [& args]
   `(catch ~@args))
 
 (defmacro TRANSLATE_cond [& args]
@@ -72,7 +72,7 @@
 (defmacro TRANSLATE_get [& args]
   `(get ~@args))
 
-(defmacro TRANSLATE_if [& args]
+(defmacro má [& args]
   `(if ~@args))
 
 (defmacro TRANSLATE_inc [& args]
@@ -87,7 +87,7 @@
 (defmacro TRANSLATE_keyword [& args]
   `(keyword ~@args))
 
-(defmacro TRANSLATE_let [& args]
+(defmacro lig [& args]
   `(let ~@args))
 
 (defmacro TRANSLATE_map [& args]
@@ -150,8 +150,12 @@
 (defmacro TRANSLATE_theme_toggle [& args]
   `(theme-toggle ~@args))
 
-(defmacro TRANSLATE_try [& args]
-  `(try ~@args))
+(defmacro triail [& ghabháil]
+  `(try ~@(map (fn [form]
+                 (if (and (seq? form) (= 'ghabháil (first form)))
+                   (cons 'catch (rest form))
+                   form))
+               ghabháil)))
 
 (defmacro TRANSLATE_vector_QMARK [& args]
   `(vector? ~@args))

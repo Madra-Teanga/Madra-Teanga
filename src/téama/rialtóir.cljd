@@ -1,40 +1,33 @@
 (ns téama.inchinn
   (:require [téama.staid :as s]
             [téama.comharthaí :as t]
-            [sheirbhísí.stórais_logánta :as local_store]
-            ["package:flutter/material.dart" :as m]))
+            [draíocht.croí :as c]
+            [draíocht.eitiltíol-abhar :as e]
+            [sheirbhísí.stórais_logánta :as stórais_logánta]))
 
-;; Builds a Flutter ThemeData map for the given mode keyword (:light or :dark).
-;; Called by the root widget on every rebuild to apply the current theme.
-(defn mode-setting [mód]
-  (let [light? (= mód :solais)]
-    (m/ThemeData
-     .brightness (if light? m.Brightness/light m.Brightness/dark)
-     .primaryColor (if light?
-                     (:brand-primary t/colors)
-                     (:brand-secondary t/colors))
-     .appBarTheme (m/AppBarTheme
-                   .backgroundColor (if light?
-                                      (:brand-primary t/colors)
-                                      (:surface-dark t/colors))
-                   .foregroundColor m.Colors/white))))
+(c/sainf mode-setting [mód]
+         (c/lig [solais? (= mód :solais)]
+                (e/sonraí_téama
+                 :gile (c/má solais? e/gile_solais e/gile_dorcha)
+                 :dath_príomhúil (c/má solais?
+                                       (:brand-primary t/colors)
+                                       (:brand-secondary t/colors))
+                 :téama_barra (e/téama_barra
+                               :dath_cúlra (c/má solais?
+                                                 (:brand-primary t/colors)
+                                                 (:surface-dark t/colors))
+                               :dath_tulra e/bán))))
 
-;; Toggles the active mode between :light and :dark.
-;; The state watcher installed by load-mode! will persist the change automatically.
-(defn toggle-mode! []
-  (swap! s/staid update :mód {:solais :dark :dark :solais}))
+(c/sainf toggle-mode! []
+         (swap! s/staid update :mód {:solais :dorcha :dorcha :solais}))
 
-;; Loads the persisted theme mode from local storage on app startup.
-;; Falls back to :light if nothing is stored or an error occurs.
-;; Also installs a watcher that persists any future mode changes to storage
-;; so the preference survives app restarts.
-(defn ^:async load-mode! []
-  (try
-    (let [mode-str (await (local_store/get-value "theme_mode"))
-          mode (if mode-str (keyword mode-str) :solais)]
-      (swap! s/staid assoc :mód mode))
-    (catch Object _
-      (swap! s/staid assoc :mód :solais)))
-  (add-watch s/staid :persist
-             (fn [_ _ _ new-state]
-               (local_store/set-value! "theme_mode" (name (:mód new-state))))))
+(c/sainf ^:async load-mode! []
+         (c/triail
+          (c/lig [mode-str (c/fan (stórais_logánta/get-value "theme_mode"))
+                  mode (c/má mode-str (keyword mode-str) :solais)]
+                 (swap! s/staid assoc :mód mode))
+          (ghabháil Object _
+                      (swap! s/staid assoc :mód :solais)))
+         (add-watch s/staid :persist
+                    (fn [_ _ _ new-state]
+                      (stórais_logánta/set-value! "theme_mode" (name (:mód new-state))))))

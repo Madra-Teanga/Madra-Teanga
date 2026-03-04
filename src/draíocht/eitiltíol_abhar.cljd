@@ -9,10 +9,10 @@
     ~@(when (contains? opts :TRANSLATE_actions) ['.actions TRANSLATE_actions])
     ~@(when (contains? opts :TRANSLATE_title) ['.title TRANSLATE_title])))
 
-(defmacro TRANSLATE_AppBarTheme [& {:keys [TRANSLATE_backgroundColor TRANSLATE_foregroundColor] :as opts}]
+(defmacro téama_barra [& {:keys [dath_cúlra dath_tulra] :as opts}]
   `(m/AppBarTheme
-    ~@(when (contains? opts :TRANSLATE_backgroundColor) ['.backgroundColor TRANSLATE_backgroundColor])
-    ~@(when (contains? opts :TRANSLATE_foregroundColor) ['.foregroundColor TRANSLATE_foregroundColor])))
+    ~@(when (contains? opts :dath_cúlra) ['.backgroundColor dath_cúlra])
+    ~@(when (contains? opts :dath_tulra) ['.foregroundColor dath_tulra])))
 
 (defmacro TRANSLATE_Border_all [& {:keys [TRANSLATE_color TRANSLATE_width] :as opts}]
   `(m.Border/all
@@ -191,11 +191,11 @@
     ~@(when (contains? opts :TRANSLATE_fontStyle) ['.fontStyle TRANSLATE_fontStyle])
     ~@(when (contains? opts :TRANSLATE_fontWeight) ['.fontWeight TRANSLATE_fontWeight])))
 
-(defmacro TRANSLATE_ThemeData [& {:keys [TRANSLATE_appBarTheme TRANSLATE_brightness TRANSLATE_primaryColor] :as opts}]
+(defmacro sonraí_téama [& {:keys [téama_barra gile dath_príomhúil] :as opts}]
   `(m/ThemeData
-    ~@(when (contains? opts :TRANSLATE_appBarTheme) ['.appBarTheme TRANSLATE_appBarTheme])
-    ~@(when (contains? opts :TRANSLATE_brightness) ['.brightness TRANSLATE_brightness])
-    ~@(when (contains? opts :TRANSLATE_primaryColor) ['.primaryColor TRANSLATE_primaryColor])))
+    ~@(when (contains? opts :téama_barra) ['.appBarTheme téama_barra])
+    ~@(when (contains? opts :gile) ['.brightness gile])
+    ~@(when (contains? opts :dath_príomhúil) ['.primaryColor dath_príomhúil])))
 
 (defn fan-go-réidh []
   (m.WidgetsFlutterBinding/ensureInitialized))
@@ -211,15 +211,15 @@
 
 ;; ── Static Values ──
 
-(def TRANSLATE_Brightness_dark m.Brightness/dark)
+(def gile_dorcha m.Brightness/dark)
 
-(def TRANSLATE_Brightness_light m.Brightness/light)
+(def gile_solais m.Brightness/light)
 
 (def TRANSLATE_Colors_indigo m.Colors/indigo)
 
 (def TRANSLATE_Colors_pinkAccent m.Colors/pinkAccent)
 
-(def TRANSLATE_Colors_white m.Colors/white)
+(def bán m.Colors/white)
 
 (def TRANSLATE_Icons_dark_mode m.Icons/dark_mode)
 
