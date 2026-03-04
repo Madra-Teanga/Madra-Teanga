@@ -1,0 +1,232 @@
+(ns draíocht.eitiltíol-abhar
+  (:require ["package:flutter/material.dart" :as m]))
+
+(defmacro TRANSLATE_Alignment_center [& args]
+  `(m.Alignment/center ~@args))
+
+(defmacro TRANSLATE_AppBar [& {:keys [TRANSLATE_actions TRANSLATE_title] :as opts}]
+  `(m/AppBar
+    ~@(when (contains? opts :TRANSLATE_actions) ['.actions TRANSLATE_actions])
+    ~@(when (contains? opts :TRANSLATE_title) ['.title TRANSLATE_title])))
+
+(defmacro téama_barra [& {:keys [dath_cúlra dath_tulra] :as opts}]
+  `(m/AppBarTheme
+    ~@(when (contains? opts :dath_cúlra) ['.backgroundColor dath_cúlra])
+    ~@(when (contains? opts :dath_tulra) ['.foregroundColor dath_tulra])))
+
+(defmacro TRANSLATE_Border_all [& {:keys [TRANSLATE_color TRANSLATE_width] :as opts}]
+  `(m.Border/all
+    ~@(when (contains? opts :TRANSLATE_color) ['.color TRANSLATE_color])
+    ~@(when (contains? opts :TRANSLATE_width) ['.width TRANSLATE_width])))
+
+(defmacro TRANSLATE_BorderRadius_circular [& args]
+  `(m.BorderRadius/circular ~@args))
+
+(defmacro TRANSLATE_BoxDecoration [& {:keys [TRANSLATE_border TRANSLATE_borderRadius TRANSLATE_color] :as opts}]
+  `(m/BoxDecoration
+    ~@(when (contains? opts :TRANSLATE_border) ['.border TRANSLATE_border])
+    ~@(when (contains? opts :TRANSLATE_borderRadius) ['.borderRadius TRANSLATE_borderRadius])
+    ~@(when (contains? opts :TRANSLATE_color) ['.color TRANSLATE_color])))
+
+(defmacro TRANSLATE_Center [& {:keys [TRANSLATE_child] :as opts}]
+  `(m/Center
+    ~@(when (contains? opts :TRANSLATE_child) ['.child TRANSLATE_child])))
+
+(defmacro TRANSLATE_Chip [& {:keys [TRANSLATE_backgroundColor TRANSLATE_label] :as opts}]
+  `(m/Chip
+    ~@(when (contains? opts :TRANSLATE_backgroundColor) ['.backgroundColor TRANSLATE_backgroundColor])
+    ~@(when (contains? opts :TRANSLATE_label) ['.label TRANSLATE_label])))
+
+(defmacro TRANSLATE_CircularProgressIndicator [& args]
+  `(m/CircularProgressIndicator ~@args))
+
+(defmacro TRANSLATE_Color [& args]
+  `(m/Color ~@args))
+
+(defmacro TRANSLATE_Colors_black [& args]
+  `(m.Colors/black ~@args))
+
+(defmacro TRANSLATE_Colors_blue [& args]
+  `(m.Colors/blue ~@args))
+
+(defmacro TRANSLATE_Colors_green [& args]
+  `(m.Colors/green ~@args))
+
+(defmacro TRANSLATE_Colors_grey [& args]
+  `(m.Colors/grey ~@args))
+
+(defmacro TRANSLATE_Colors_grey_shade200 [& args]
+  `(m.Colors/grey ~@args))
+
+(defmacro TRANSLATE_Colors_orange [& args]
+  `(m.Colors/orange ~@args))
+
+(defmacro TRANSLATE_Colors_red [& args]
+  `(m.Colors/red ~@args))
+
+(defmacro TRANSLATE_Colors_red_shade100 [& args]
+  `(m.Colors/red ~@args))
+
+(defmacro TRANSLATE_Colors_white [& args]
+  `(m.Colors/white ~@args))
+
+(defmacro TRANSLATE_Column [& {:keys [TRANSLATE_children TRANSLATE_mainAxisAlignment TRANSLATE_mainAxisSize] :as opts}]
+  `(m/Column
+    ~@(when (contains? opts :TRANSLATE_children) ['.children TRANSLATE_children])
+    ~@(when (contains? opts :TRANSLATE_mainAxisAlignment) ['.mainAxisAlignment TRANSLATE_mainAxisAlignment])
+    ~@(when (contains? opts :TRANSLATE_mainAxisSize) ['.mainAxisSize TRANSLATE_mainAxisSize])))
+
+(defmacro TRANSLATE_Container [& {:keys [TRANSLATE_alignment TRANSLATE_child TRANSLATE_decoration TRANSLATE_height TRANSLATE_margin TRANSLATE_padding TRANSLATE_width] :as opts}]
+  `(m/Container
+    ~@(when (contains? opts :TRANSLATE_alignment) ['.alignment TRANSLATE_alignment])
+    ~@(when (contains? opts :TRANSLATE_child) ['.child TRANSLATE_child])
+    ~@(when (contains? opts :TRANSLATE_decoration) ['.decoration TRANSLATE_decoration])
+    ~@(when (contains? opts :TRANSLATE_height) ['.height TRANSLATE_height])
+    ~@(when (contains? opts :TRANSLATE_margin) ['.margin TRANSLATE_margin])
+    ~@(when (contains? opts :TRANSLATE_padding) ['.padding TRANSLATE_padding])
+    ~@(when (contains? opts :TRANSLATE_width) ['.width TRANSLATE_width])))
+
+(defmacro TRANSLATE_EdgeInsets_all [& args]
+  `(m.EdgeInsets/all ~@args))
+
+(defmacro TRANSLATE_EdgeInsets_symmetric [& {:keys [TRANSLATE_horizontal TRANSLATE_vertical] :as opts}]
+  `(m.EdgeInsets/symmetric
+    ~@(when (contains? opts :TRANSLATE_horizontal) ['.horizontal TRANSLATE_horizontal])
+    ~@(when (contains? opts :TRANSLATE_vertical) ['.vertical TRANSLATE_vertical])))
+
+(defmacro TRANSLATE_ElevatedButton [& {:keys [TRANSLATE_onPressed TRANSLATE_style] :as opts}]
+  `(m/ElevatedButton
+    ~@(when (contains? opts :TRANSLATE_onPressed) ['.onPressed TRANSLATE_onPressed])
+    ~@(when (contains? opts :TRANSLATE_style) ['.style TRANSLATE_style])))
+
+(defmacro TRANSLATE_ElevatedButton_styleFrom [& {:keys [TRANSLATE_backgroundColor TRANSLATE_padding] :as opts}]
+  `(m.ElevatedButton/styleFrom
+    ~@(when (contains? opts :TRANSLATE_backgroundColor) ['.backgroundColor TRANSLATE_backgroundColor])
+    ~@(when (contains? opts :TRANSLATE_padding) ['.padding TRANSLATE_padding])))
+
+(defmacro TRANSLATE_FontStyle_italic [& args]
+  `(m.FontStyle/italic ~@args))
+
+(defmacro TRANSLATE_FontWeight_bold [& args]
+  `(m.FontWeight/bold ~@args))
+
+(defmacro TRANSLATE_Icon [& args]
+  `(m/Icon ~@args))
+
+(defmacro TRANSLATE_IconButton [& {:keys [TRANSLATE_color TRANSLATE_icon TRANSLATE_onPressed] :as opts}]
+  `(m/IconButton
+    ~@(when (contains? opts :TRANSLATE_color) ['.color TRANSLATE_color])
+    ~@(when (contains? opts :TRANSLATE_icon) ['.icon TRANSLATE_icon])
+    ~@(when (contains? opts :TRANSLATE_onPressed) ['.onPressed TRANSLATE_onPressed])))
+
+(defmacro TRANSLATE_Icons_lightbulb [& args]
+  `(m.Icons/lightbulb ~@args))
+
+(defmacro TRANSLATE_Icons_lightbulb_outline [& args]
+  `(m.Icons/lightbulb_outline ~@args))
+
+(defmacro TRANSLATE_MainAxisAlignment_center [& args]
+  `(m.MainAxisAlignment/center ~@args))
+
+(defmacro TRANSLATE_MainAxisSize_min [& args]
+  `(m.MainAxisSize/min ~@args))
+
+(defmacro TRANSLATE_MaterialApp [& {:keys [TRANSLATE_home TRANSLATE_theme TRANSLATE_title] :as opts}]
+  `(m/MaterialApp
+    ~@(when (contains? opts :TRANSLATE_home) ['.home TRANSLATE_home])
+    ~@(when (contains? opts :TRANSLATE_theme) ['.theme TRANSLATE_theme])
+    ~@(when (contains? opts :TRANSLATE_title) ['.title TRANSLATE_title])))
+
+(defmacro TRANSLATE_Opacity [& {:keys [TRANSLATE_opacity] :as opts}]
+  `(m/Opacity
+    ~@(when (contains? opts :TRANSLATE_opacity) ['.opacity TRANSLATE_opacity])))
+
+(defmacro TRANSLATE_Padding [& {:keys [TRANSLATE_padding] :as opts}]
+  `(m/Padding
+    ~@(when (contains? opts :TRANSLATE_padding) ['.padding TRANSLATE_padding])))
+
+(defmacro TRANSLATE_Row [& {:keys [TRANSLATE_children TRANSLATE_mainAxisAlignment] :as opts}]
+  `(m/Row
+    ~@(when (contains? opts :TRANSLATE_children) ['.children TRANSLATE_children])
+    ~@(when (contains? opts :TRANSLATE_mainAxisAlignment) ['.mainAxisAlignment TRANSLATE_mainAxisAlignment])))
+
+(defmacro TRANSLATE_Scaffold [& {:keys [TRANSLATE_appBar TRANSLATE_body] :as opts}]
+  `(m/Scaffold
+    ~@(when (contains? opts :TRANSLATE_appBar) ['.appBar TRANSLATE_appBar])
+    ~@(when (contains? opts :TRANSLATE_body) ['.body TRANSLATE_body])))
+
+(defmacro TRANSLATE_SizedBox [& {:keys [TRANSLATE_height TRANSLATE_width] :as opts}]
+  `(m/SizedBox
+    ~@(when (contains? opts :TRANSLATE_height) ['.height TRANSLATE_height])
+    ~@(when (contains? opts :TRANSLATE_width) ['.width TRANSLATE_width])))
+
+(defmacro TRANSLATE_Stack [& {:keys [TRANSLATE_alignment TRANSLATE_children] :as opts}]
+  `(m/Stack
+    ~@(when (contains? opts :TRANSLATE_alignment) ['.alignment TRANSLATE_alignment])
+    ~@(when (contains? opts :TRANSLATE_children) ['.children TRANSLATE_children])))
+
+(defmacro TRANSLATE_Text [& {:keys [TRANSLATE_style] :as opts}]
+  `(m/Text
+    ~@(when (contains? opts :TRANSLATE_style) ['.style TRANSLATE_style])))
+
+(defmacro TRANSLATE_TextAlign_center [& args]
+  `(m.TextAlign/center ~@args))
+
+(defmacro TRANSLATE_TextEditingController [& args]
+  `(m/TextEditingController ~@args))
+
+(defmacro TRANSLATE_TextField [& {:keys [TRANSLATE_autofocus TRANSLATE_controller TRANSLATE_onChanged TRANSLATE_onSubmitted TRANSLATE_style TRANSLATE_textAlign] :as opts}]
+  `(m/TextField
+    ~@(when (contains? opts :TRANSLATE_autofocus) ['.autofocus TRANSLATE_autofocus])
+    ~@(when (contains? opts :TRANSLATE_controller) ['.controller TRANSLATE_controller])
+    ~@(when (contains? opts :TRANSLATE_onChanged) ['.onChanged TRANSLATE_onChanged])
+    ~@(when (contains? opts :TRANSLATE_onSubmitted) ['.onSubmitted TRANSLATE_onSubmitted])
+    ~@(when (contains? opts :TRANSLATE_style) ['.style TRANSLATE_style])
+    ~@(when (contains? opts :TRANSLATE_textAlign) ['.textAlign TRANSLATE_textAlign])))
+
+(defmacro TRANSLATE_TextStyle [& {:keys [TRANSLATE_color TRANSLATE_fontSize TRANSLATE_fontStyle TRANSLATE_fontWeight] :as opts}]
+  `(m/TextStyle
+    ~@(when (contains? opts :TRANSLATE_color) ['.color TRANSLATE_color])
+    ~@(when (contains? opts :TRANSLATE_fontSize) ['.fontSize TRANSLATE_fontSize])
+    ~@(when (contains? opts :TRANSLATE_fontStyle) ['.fontStyle TRANSLATE_fontStyle])
+    ~@(when (contains? opts :TRANSLATE_fontWeight) ['.fontWeight TRANSLATE_fontWeight])))
+
+(defmacro sonraí_téama [& {:keys [téama_barra gile dath_príomhúil] :as opts}]
+  `(m/ThemeData
+    ~@(when (contains? opts :téama_barra) ['.appBarTheme téama_barra])
+    ~@(when (contains? opts :gile) ['.brightness gile])
+    ~@(when (contains? opts :dath_príomhúil) ['.primaryColor dath_príomhúil])))
+
+(defn fan-go-réidh []
+  (m.WidgetsFlutterBinding/ensureInitialized))
+
+(defmacro TRANSLATE_Wrap [& {:keys [TRANSLATE_alignment TRANSLATE_children TRANSLATE_spacing] :as opts}]
+  `(m/Wrap
+    ~@(when (contains? opts :TRANSLATE_alignment) ['.alignment TRANSLATE_alignment])
+    ~@(when (contains? opts :TRANSLATE_children) ['.children TRANSLATE_children])
+    ~@(when (contains? opts :TRANSLATE_spacing) ['.spacing TRANSLATE_spacing])))
+
+(defmacro TRANSLATE_WrapAlignment_center [& args]
+  `(m.WrapAlignment/center ~@args))
+
+;; ── Static Values ──
+
+(def gile_dorcha m.Brightness/dark)
+
+(def gile_solais m.Brightness/light)
+
+(def TRANSLATE_Colors_indigo m.Colors/indigo)
+
+(def TRANSLATE_Colors_pinkAccent m.Colors/pinkAccent)
+
+(def bán m.Colors/white)
+
+(def TRANSLATE_Icons_dark_mode m.Icons/dark_mode)
+
+(def TRANSLATE_Icons_light_mode m.Icons/light_mode)
+
+;; ── Functions ──
+
+(defmacro ar-siúl [& args]
+  `(m/runApp ~@args))
+

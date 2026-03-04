@@ -1,0 +1,33 @@
+(ns téama.inchinn
+  (:require [téama.staid :as s]
+            [téama.comharthaí :as t]
+            [draíocht.croí :as c]
+            [draíocht.eitiltíol-abhar :as e]
+            [sheirbhísí.stórais_logánta :as stórais_logánta]))
+
+(c/sainf mode-setting [mód]
+         (c/lig [solais? (= mód :solais)]
+                (e/sonraí_téama
+                 :gile (c/má solais? e/gile_solais e/gile_dorcha)
+                 :dath_príomhúil (c/má solais?
+                                       (:brand-primary t/colors)
+                                       (:brand-secondary t/colors))
+                 :téama_barra (e/téama_barra
+                               :dath_cúlra (c/má solais?
+                                                 (:brand-primary t/colors)
+                                                 (:surface-dark t/colors))
+                               :dath_tulra e/bán))))
+
+(c/sainf toggle-mode! []
+         (swap! s/staid update :mód {:solais :dorcha :dorcha :solais}))
+
+(c/sainf ^:async load-mode! []
+         (c/triail
+          (c/lig [mode-str (c/fan (stórais_logánta/get-value "theme_mode"))
+                  mode (c/má mode-str (keyword mode-str) :solais)]
+                 (swap! s/staid assoc :mód mode))
+          (ghabháil Object _
+                      (swap! s/staid assoc :mód :solais)))
+         (add-watch s/staid :persist
+                    (fn [_ _ _ new-state]
+                      (stórais_logánta/set-value! "theme_mode" (name (:mód new-state))))))

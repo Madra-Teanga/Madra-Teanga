@@ -1,0 +1,16 @@
+(ns téama.comharthaí
+  (:require ["package:flutter/material.dart" :as m]))
+
+;; Central design tokens for the application.
+;; All colour references in the codebase should come from here
+;; rather than using Flutter colour constants directly.
+;;
+;; :brand-primary   – main accent colour used in light mode (app bar, highlights)
+;; :brand-secondary – accent colour used in dark mode
+;; :surface-light   – background colour for light mode surfaces
+;; :surface-dark    – background colour for dark mode surfaces
+(def colors
+  {:brand-primary   m.Colors/indigo
+   :brand-secondary m.Colors/pinkAccent
+   :surface-light   m.Colors/white
+   :surface-dark    (m/Color 0xFF111111)})

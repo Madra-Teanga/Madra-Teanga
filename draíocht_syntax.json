@@ -1,0 +1,793 @@
+{
+  "groups" : [ {
+    "group_id" : "core",
+    "import" : null,
+    "entries" : [ {
+      "english" : ".-text",
+      "irish" : ""
+    }, {
+      "english" : ".clear",
+      "irish" : ""
+    }, {
+      "english" : ".getString",
+      "irish" : ""
+    }, {
+      "english" : ".loadString",
+      "irish" : ""
+    }, {
+      "english" : ".play",
+      "irish" : ""
+    }, {
+      "english" : ".setString",
+      "irish" : ""
+    }, {
+      "english" : ".withOpacity",
+      "irish" : ""
+    }, {
+      "english" : "<",
+      "irish" : ""
+    }, {
+      "english" : "=",
+      "irish" : ""
+    }, {
+      "english" : "add-watch",
+      "irish" : ""
+    }, {
+      "english" : "and",
+      "irish" : ""
+    }, {
+      "english" : "atom",
+      "irish" : ""
+    }, {
+      "english" : "await",
+      "irish" : ""
+    }, {
+      "english" : "building-view",
+      "irish" : ""
+    }, {
+      "english" : "case",
+      "irish" : ""
+    }, {
+      "english" : "catch",
+      "irish" : ""
+    }, {
+      "english" : "cond",
+      "irish" : ""
+    }, {
+      "english" : "contains?",
+      "irish" : ""
+    }, {
+      "english" : "count",
+      "irish" : ""
+    }, {
+      "english" : "current-widget-fn",
+      "irish" : ""
+    }, {
+      "english" : "deep-convert",
+      "irish" : ""
+    }, {
+      "english" : "def",
+      "irish" : ""
+    }, {
+      "english" : "defn",
+      "irish" : ""
+    }, {
+      "english" : "do",
+      "irish" : ""
+    }, {
+      "english" : "doto",
+      "irish" : ""
+    }, {
+      "english" : "fn",
+      "irish" : ""
+    }, {
+      "english" : "fn*",
+      "irish" : ""
+    }, {
+      "english" : "for",
+      "irish" : ""
+    }, {
+      "english" : "get",
+      "irish" : ""
+    }, {
+      "english" : "if",
+      "irish" : ""
+    }, {
+      "english" : "inc",
+      "irish" : ""
+    }, {
+      "english" : "instance?",
+      "irish" : ""
+    }, {
+      "english" : "into",
+      "irish" : ""
+    }, {
+      "english" : "keyword",
+      "irish" : ""
+    }, {
+      "english" : "let",
+      "irish" : ""
+    }, {
+      "english" : "map",
+      "irish" : ""
+    }, {
+      "english" : "mapv",
+      "irish" : ""
+    }, {
+      "english" : "merge",
+      "irish" : ""
+    }, {
+      "english" : "mod",
+      "irish" : ""
+    }, {
+      "english" : "name",
+      "irish" : ""
+    }, {
+      "english" : "next-sentence!",
+      "irish" : ""
+    }, {
+      "english" : "nil?",
+      "irish" : ""
+    }, {
+      "english" : "not",
+      "irish" : ""
+    }, {
+      "english" : "ns",
+      "irish" : ""
+    }, {
+      "english" : "println",
+      "irish" : ""
+    }, {
+      "english" : "quiz-view",
+      "irish" : ""
+    }, {
+      "english" : "range",
+      "irish" : ""
+    }, {
+      "english" : "reset!",
+      "irish" : ""
+    }, {
+      "english" : "sequential?",
+      "irish" : ""
+    }, {
+      "english" : "some->",
+      "irish" : ""
+    }, {
+      "english" : "str",
+      "irish" : ""
+    }, {
+      "english" : "strip-fadas",
+      "irish" : ""
+    }, {
+      "english" : "subvec",
+      "irish" : ""
+    }, {
+      "english" : "swap!",
+      "irish" : ""
+    }, {
+      "english" : "theme-toggle",
+      "irish" : ""
+    }, {
+      "english" : "try",
+      "irish" : ""
+    }, {
+      "english" : "vector?",
+      "irish" : ""
+    }, {
+      "english" : "when",
+      "irish" : ""
+    }, {
+      "english" : "when-not",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "cljd-flutter",
+    "import" : "cljd.flutter",
+    "entries" : [ {
+      "english" : "widget",
+      "type" : "function",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "clojure-string",
+    "import" : "clojure.string",
+    "entries" : [ {
+      "english" : "blank?",
+      "type" : "function",
+      "irish" : ""
+    }, {
+      "english" : "escape",
+      "type" : "function",
+      "irish" : ""
+    }, {
+      "english" : "join",
+      "type" : "function",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "dart-async",
+    "import" : "dart:async",
+    "entries" : [ {
+      "english" : "Timer.",
+      "type" : "constructor",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "dart-convert",
+    "import" : "dart:convert",
+    "entries" : [ {
+      "english" : "jsonDecode",
+      "type" : "function",
+      "irish" : ""
+    }, {
+      "english" : "jsonEncode",
+      "type" : "function",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "audioplayers-audioplayers",
+    "import" : "package:audioplayers/audioplayers.dart",
+    "entries" : [ {
+      "english" : "AssetSource",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "AudioPlayer",
+      "type" : "constructor",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "flutter-material",
+    "import" : "package:flutter/material.dart",
+    "entries" : [ {
+      "english" : "Alignment.center",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "AppBar",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "AppBarTheme",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Border.all",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "BorderRadius.circular",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "BoxDecoration",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Center",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Chip",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "CircularProgressIndicator",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Color",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.black",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.blue",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.green",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.grey",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.grey.shade200",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.orange",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.red",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.red.shade100",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Colors.white",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Column",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Container",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "EdgeInsets.all",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "EdgeInsets.symmetric",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "ElevatedButton",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "ElevatedButton.styleFrom",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "FontStyle.italic",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "FontWeight.bold",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Icon",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "IconButton",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Icons.lightbulb",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Icons.lightbulb_outline",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "MainAxisAlignment.center",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "MainAxisSize.min",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "MaterialApp",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Opacity",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Padding",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Row",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Scaffold",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "SizedBox",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Stack",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Text",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "TextAlign.center",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "TextEditingController",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "TextField",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "TextStyle",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "ThemeData",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "WidgetsFlutterBinding.ensureInitialized",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "Wrap",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "WrapAlignment.center",
+      "type" : "constructor",
+      "irish" : ""
+    }, {
+      "english" : "runApp",
+      "type" : "function",
+      "irish" : ""
+    }, {
+      "english" : ".actions",
+      "type" : "named-param",
+      "parent" : "AppBar",
+      "irish" : ""
+    }, {
+      "english" : ".title",
+      "type" : "named-param",
+      "parent" : "AppBar",
+      "irish" : ""
+    }, {
+      "english" : ".backgroundColor",
+      "type" : "named-param",
+      "parent" : "AppBarTheme",
+      "irish" : ""
+    }, {
+      "english" : ".foregroundColor",
+      "type" : "named-param",
+      "parent" : "AppBarTheme",
+      "irish" : ""
+    }, {
+      "english" : ".color",
+      "type" : "named-param",
+      "parent" : "Border.all",
+      "irish" : ""
+    }, {
+      "english" : ".width",
+      "type" : "named-param",
+      "parent" : "Border.all",
+      "irish" : ""
+    }, {
+      "english" : ".border",
+      "type" : "named-param",
+      "parent" : "BoxDecoration",
+      "irish" : ""
+    }, {
+      "english" : ".borderRadius",
+      "type" : "named-param",
+      "parent" : "BoxDecoration",
+      "irish" : ""
+    }, {
+      "english" : ".color",
+      "type" : "named-param",
+      "parent" : "BoxDecoration",
+      "irish" : ""
+    }, {
+      "english" : ".child",
+      "type" : "named-param",
+      "parent" : "Center",
+      "irish" : ""
+    }, {
+      "english" : ".backgroundColor",
+      "type" : "named-param",
+      "parent" : "Chip",
+      "irish" : ""
+    }, {
+      "english" : ".label",
+      "type" : "named-param",
+      "parent" : "Chip",
+      "irish" : ""
+    }, {
+      "english" : ".children",
+      "type" : "named-param",
+      "parent" : "Column",
+      "irish" : ""
+    }, {
+      "english" : ".mainAxisAlignment",
+      "type" : "named-param",
+      "parent" : "Column",
+      "irish" : ""
+    }, {
+      "english" : ".mainAxisSize",
+      "type" : "named-param",
+      "parent" : "Column",
+      "irish" : ""
+    }, {
+      "english" : ".alignment",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".child",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".decoration",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".height",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".margin",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".padding",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".width",
+      "type" : "named-param",
+      "parent" : "Container",
+      "irish" : ""
+    }, {
+      "english" : ".horizontal",
+      "type" : "named-param",
+      "parent" : "EdgeInsets.symmetric",
+      "irish" : ""
+    }, {
+      "english" : ".vertical",
+      "type" : "named-param",
+      "parent" : "EdgeInsets.symmetric",
+      "irish" : ""
+    }, {
+      "english" : ".onPressed",
+      "type" : "named-param",
+      "parent" : "ElevatedButton",
+      "irish" : ""
+    }, {
+      "english" : ".style",
+      "type" : "named-param",
+      "parent" : "ElevatedButton",
+      "irish" : ""
+    }, {
+      "english" : ".backgroundColor",
+      "type" : "named-param",
+      "parent" : "ElevatedButton.styleFrom",
+      "irish" : ""
+    }, {
+      "english" : ".padding",
+      "type" : "named-param",
+      "parent" : "ElevatedButton.styleFrom",
+      "irish" : ""
+    }, {
+      "english" : ".color",
+      "type" : "named-param",
+      "parent" : "IconButton",
+      "irish" : ""
+    }, {
+      "english" : ".icon",
+      "type" : "named-param",
+      "parent" : "IconButton",
+      "irish" : ""
+    }, {
+      "english" : ".onPressed",
+      "type" : "named-param",
+      "parent" : "IconButton",
+      "irish" : ""
+    }, {
+      "english" : ".home",
+      "type" : "named-param",
+      "parent" : "MaterialApp",
+      "irish" : ""
+    }, {
+      "english" : ".theme",
+      "type" : "named-param",
+      "parent" : "MaterialApp",
+      "irish" : ""
+    }, {
+      "english" : ".title",
+      "type" : "named-param",
+      "parent" : "MaterialApp",
+      "irish" : ""
+    }, {
+      "english" : ".opacity",
+      "type" : "named-param",
+      "parent" : "Opacity",
+      "irish" : ""
+    }, {
+      "english" : ".padding",
+      "type" : "named-param",
+      "parent" : "Padding",
+      "irish" : ""
+    }, {
+      "english" : ".children",
+      "type" : "named-param",
+      "parent" : "Row",
+      "irish" : ""
+    }, {
+      "english" : ".mainAxisAlignment",
+      "type" : "named-param",
+      "parent" : "Row",
+      "irish" : ""
+    }, {
+      "english" : ".appBar",
+      "type" : "named-param",
+      "parent" : "Scaffold",
+      "irish" : ""
+    }, {
+      "english" : ".body",
+      "type" : "named-param",
+      "parent" : "Scaffold",
+      "irish" : ""
+    }, {
+      "english" : ".height",
+      "type" : "named-param",
+      "parent" : "SizedBox",
+      "irish" : ""
+    }, {
+      "english" : ".width",
+      "type" : "named-param",
+      "parent" : "SizedBox",
+      "irish" : ""
+    }, {
+      "english" : ".alignment",
+      "type" : "named-param",
+      "parent" : "Stack",
+      "irish" : ""
+    }, {
+      "english" : ".children",
+      "type" : "named-param",
+      "parent" : "Stack",
+      "irish" : ""
+    }, {
+      "english" : ".style",
+      "type" : "named-param",
+      "parent" : "Text",
+      "irish" : ""
+    }, {
+      "english" : ".autofocus",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".controller",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".onChanged",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".onSubmitted",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".style",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".textAlign",
+      "type" : "named-param",
+      "parent" : "TextField",
+      "irish" : ""
+    }, {
+      "english" : ".color",
+      "type" : "named-param",
+      "parent" : "TextStyle",
+      "irish" : ""
+    }, {
+      "english" : ".fontSize",
+      "type" : "named-param",
+      "parent" : "TextStyle",
+      "irish" : ""
+    }, {
+      "english" : ".fontStyle",
+      "type" : "named-param",
+      "parent" : "TextStyle",
+      "irish" : ""
+    }, {
+      "english" : ".fontWeight",
+      "type" : "named-param",
+      "parent" : "TextStyle",
+      "irish" : ""
+    }, {
+      "english" : ".appBarTheme",
+      "type" : "named-param",
+      "parent" : "ThemeData",
+      "irish" : ""
+    }, {
+      "english" : ".brightness",
+      "type" : "named-param",
+      "parent" : "ThemeData",
+      "irish" : ""
+    }, {
+      "english" : ".primaryColor",
+      "type" : "named-param",
+      "parent" : "ThemeData",
+      "irish" : ""
+    }, {
+      "english" : ".alignment",
+      "type" : "named-param",
+      "parent" : "Wrap",
+      "irish" : ""
+    }, {
+      "english" : ".children",
+      "type" : "named-param",
+      "parent" : "Wrap",
+      "irish" : ""
+    }, {
+      "english" : ".spacing",
+      "type" : "named-param",
+      "parent" : "Wrap",
+      "irish" : ""
+    }, {
+      "english" : "Brightness.dark",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Brightness.light",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Colors.indigo",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Colors.pinkAccent",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Colors.white",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Icons.dark_mode",
+      "type" : "static-access",
+      "irish" : ""
+    }, {
+      "english" : "Icons.light_mode",
+      "type" : "static-access",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "flutter-services",
+    "import" : "package:flutter/services.dart",
+    "entries" : [ {
+      "english" : "rootBundle",
+      "type" : "function",
+      "irish" : ""
+    } ]
+  }, {
+    "group_id" : "shared-preferences-shared-preferences",
+    "import" : "package:shared_preferences/shared_preferences.dart",
+    "entries" : [ {
+      "english" : "SharedPreferences.getInstance",
+      "type" : "constructor",
+      "irish" : ""
+    } ]
+  } ]
+}

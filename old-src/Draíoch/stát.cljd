@@ -1,0 +1,34 @@
+
+(ns Draíoch.stát
+  (:require [hti.re-dash :as rd]
+            [cljd.flutter :as f]))
+
+;; Wrappers for re-dash concepts
+
+(defmacro CláraighTeagmhasBunachar [id handler]
+  `(rd/reg-event-db ~id ~handler))
+
+(defmacro CláraighTeagmhasÉifeacht [id handler]
+  `(rd/reg-event-fx ~id ~handler))
+
+(defmacro CláraighSíntiús [id handler]
+  `(rd/reg-sub ~id ~handler))
+
+(defmacro CláraighÉifeacht [id handler]
+  `(rd/reg-fx ~id ~handler))
+
+(defmacro Seol [event-vec]
+  `(rd/dispatch ~event-vec))
+
+(defmacro SeolNíosDéanaí [mapa]
+  ;; For dispatch-later inside effects
+  `{:dispatch-later ~mapa})
+
+(defmacro Liostáil [query-vec]
+  `(rd/subscribe ~query-vec))
+
+(defmacro Breathnaigh [bindings & body]
+  `(f/widget :watch ~bindings ~@body))
+
+(defmacro Bainistigh [bindings & body]
+  `(f/widget :managed ~bindings ~@body))

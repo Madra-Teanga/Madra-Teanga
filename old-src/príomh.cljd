@@ -1,0 +1,22 @@
+
+(ns príomh
+  (:require [Draíoch.bunus :as b]
+            [Draíoch.stát :as s]
+            [Draíoch.app :as app]
+            [feidhmchlár.teagmhais :as teagmhais]
+            [feidhmchlár.síntiúis :as síntiúis]
+            [feidhmchlár.éifeachtaí :as éifeachtaí]
+            [comhéadan.scáileáin.ceachtanna :as ceachtanna]))
+
+(b/Sainigh main []
+           (teagmhais/cláraigh-teagmhais!)
+           (síntiúis/cláraigh-síntiúis!)
+           (éifeachtaí/cláraigh-éifeachtaí!)
+
+           (s/Seol [::teagmhais/tús])
+           (s/Seol [::teagmhais/lódáil-paca])
+
+           (app/Rith
+            (app/FeidhmchlárÁbhair
+             :teideal "Gaeilge"
+             :baile (ceachtanna/scáileán-ceachtanna))))

@@ -1,0 +1,15 @@
+(ns príomh
+  (:require
+   [gnéithe.ceachtanna.rialtóir :as ceachtanna]
+   [draíocht.croí :as c]
+   [draíocht.eitiltíol-abhar :as e]
+   [ródú.rialtóir :as ródaire]
+   [téama.rialtóir :as téama]))
+
+(c/tús
+ (e/fan-go-réidh)
+ (téama/load-mode!)
+ (ceachtanna/init!)
+ (ceachtanna/load-deck!)
+ (e/ar-siúl
+  (ródaire/view)))

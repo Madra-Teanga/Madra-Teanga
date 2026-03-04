@@ -1,0 +1,29 @@
+(ns ródú.rialtóir
+  (:require [cljd.flutter :as f]
+            ["package:flutter/material.dart" :as m]
+            [ródú.staid :as router-state]
+            [téama.staid :as theme-state]
+            [téama.rialtóir :as theme-ctrl]
+            [ródú.bealaí :as routes]))
+
+;; The root widget of the application.
+;; It watches both the routing atom and the theme atom, so any change to either
+;; triggers a rebuild of the MaterialApp with the updated theme or active screen.
+(defn view []
+  (f/widget
+   :watch [router-state router-state/state
+           theme-state theme-state/staid]
+   (let [current-route    (:current-view router-state)
+         theme-mode       (:mód theme-state)
+         ;; Look up the screen constructor function for the current route keyword.
+         current-widget-fn (get routes/route-map current-route)]
+     (m/MaterialApp
+      .title "Madra Teanga"
+      ;; Build a ThemeData based on the current :light / :dark mode.
+      .theme (theme-ctrl/mode-setting theme-mode)
+      .home (if current-widget-fn
+              ;; Call the screen constructor to build the active screen widget.
+              (current-widget-fn)
+              ;; Fallback: show the unrecognised route key for easy debugging.
+              (m/Center
+               .child (m/Text (str "Route not found: " current-route))))))))

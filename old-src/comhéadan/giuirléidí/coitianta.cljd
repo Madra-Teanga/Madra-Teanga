@@ -1,0 +1,103 @@
+
+(ns madra.comhéadan.giuirléidí.coitianta
+  (:require [clojure.string :as str]
+            [Draíoch.bunus :as b]
+            [Draíoch.leagan_amach :as l]
+            [Draíoch.eilimintí :as e]
+            [Draíoch.stát :as s]
+            [feidhmchlár.teagmhais :as teagmhais]))
+
+;; Map for handling Irish accents (fadas).
+(def fada-map
+  {"á" "a" "é" "e" "í" "i" "ó" "o" "ú" "u"
+   "Á" "A" "É" "E" "Í" "I" "Ó" "O" "Ú" "U"})
+
+(b/Sainigh bain-fada [s]
+           (str/escape s fada-map))
+
+(b/Sainigh faigh-stádas-carachtair [sprioc-litir clóscríofa-litir dírithe]
+           (cond
+             (nil? clóscríofa-litir) (b/Má dírithe :focused :empty)
+             (= sprioc-litir clóscríofa-litir) :correct
+             (= (bain-fada (str sprioc-litir))
+                (bain-fada (str clóscríofa-litir))) :fada-missing
+             :else :incorrect))
+
+;; Widget: Displays a single letter box.
+(b/Sainigh bosca-litreach [sprioc-char stádas clóscríofa-litir taispeáin-leid]
+           (b/Lig [carachtar-taispeána (b/Má (nil? clóscríofa-litir)
+                                             (b/Má taispeáin-leid sprioc-char (b/Má (= stádas :focused) "" "_"))
+                                             clóscríofa-litir)
+                   dath-cúlra (case stádas
+                                :correct (e/LeTeimhneacht b/Glas 0.2)
+                                :incorrect (e/LeTeimhneacht b/Dearg 0.2)
+                                :fada-missing (e/LeTeimhneacht b/Oráiste 0.3)
+                                :focused b/Bán
+                                (e/LeTeimhneacht b/Liath 0.2))
+                   dath-imill (case stádas
+                                :correct b/Glas
+                                :incorrect b/Dearg
+                                :fada-missing b/Oráiste
+                                :focused b/Gorm
+                                b/Liath)
+                   dath-téacs (cond
+                                (b/Agus (nil? clóscríofa-litir) taispeáin-leid) (e/LeTeimhneacht b/Liath 0.5)
+                                (= stádas :correct) b/Glas
+                                (= stádas :incorrect) b/Dearg
+                                :else b/Dubh)]
+
+                  (l/Bosca
+                   :leithead 36.0
+                   :airde 52.0
+                   :corrlach (l/Corrlach.uile 4.0)
+                   :ailíniú l/Ailíniú.lár
+                   :maisiú (l/MaisiúBosca
+                            :dath dath-cúlra
+                            :ga (l/GaRediúis.cruinn 6.0)
+                            :imill (l/Imlíne.uile :dath dath-imill :leithead 2.0))
+                   :páiste (e/Téacs carachtar-taispeána
+                                    :stíl (e/StílTéacs
+                                           :méidCló 24.0
+                                           :meáchanCló e/Trom
+                                           :dath dath-téacs)))))
+
+(b/Sainigh taispeáint-abairte-chríochnaithe [focail-chríochnaithe litriúla]
+           (l/Timfhilleadh
+            :ailíniú l/AilíniúTimfhilleadh.center
+            :páistí (b/LeHaghaidh [[focal litriúil] (map vector focail-chríochnaithe litriúla)]
+                                  (l/Colún
+                                   :páistí [(e/Slis
+                                             :lipéad (e/Téacs focal :stíl (e/StílTéacs :dath b/Bán))
+                                             :dathCúlra b/Glas)
+                                            (e/Slis
+                                             :lipéad (e/Téacs litriúil :stíl (e/StílTéacs :dath b/Bán))
+                                             :dathCúlra b/Liath)]))))
+
+(b/Sainigh giuirléid-tráth-na-gceist [freagra-ceart roghanna tomhais-míchearta réitithe?]
+           (l/Bosca
+            :stuáil (l/Corrlach.uile 20.0)
+            :páiste (l/Colún
+                     :páistí [(e/Téacs "Aistrigh an abairt iomlán:"
+                                       :stíl (e/StílTéacs :méidCló 20.0 :meáchanCló e/Trom))
+                              (l/BoscaMéide :airde 30.0)
+                              (l/Colún
+                               :páistí (b/LeHaghaidh [rogha roghanna]
+                                                     (b/Lig [mícheart (contains? tomhais-míchearta rogha)
+                                                             rogha-ceart (= rogha freagra-ceart)
+                                                             dath-cnaipe (cond
+                                                                           (b/Agus réitithe? rogha-ceart) b/Glas
+                                                                           mícheart (e/LeTeimhneacht b/Dearg 0.3)
+                                                                           :else (e/LeTeimhneacht b/Liath 0.2))
+                                                             dath-téacs (b/Má (b/Agus réitithe? rogha-ceart)
+                                                                              b/Bán
+                                                                              b/Dubh)]
+                                                            (l/Bosca
+                                                             :stuáil (l/Corrlach.uile 8.0)
+                                                             :páiste (l/BoscaMéide
+                                                                      :leithead 1000.0
+                                                                      :páiste (e/CnaipeArdaithe
+                                                                               :arBrú (b/Feidhm []
+                                                                                                (b/Nuair (not réitithe?)
+                                                                                                         (s/Seol [::teagmhais/tomhas rogha])))
+                                                                               :páiste (e/Téacs rogha
+                                                                                                :stíl (e/StílTéacs :méidCló 18.0 :dath dath-téacs))))))))])))

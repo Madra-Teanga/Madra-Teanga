@@ -1,0 +1,13 @@
+(ns gnéithe.ceachtanna.staid)
+
+(def initial-state
+  {:deck []
+   :sentence-idx 0
+   :word-idx 0
+   :typed-text ""
+   :mode :loading
+   :show-hints false
+   :quiz-wrong-guesses #{}
+   :quiz-solved? false})
+
+(def state (atom initial-state))
